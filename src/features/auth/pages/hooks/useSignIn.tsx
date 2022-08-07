@@ -1,30 +1,40 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { requiredMessage } from "features/validateMessage"
+import { useMutation } from "@tanstack/react-query"
+import { API } from "configs/api"
+import { requiredMessage } from "helpers/validateMessage"
 import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
+import { setToken } from "utils/token"
 import * as yup from "yup"
-
-interface FieldValues {
-  username: string
-  password: string
-}
+import { SignInDto } from "../dto"
 
 const schema = yup.object().shape({
-  username: yup.string().label("Tên nhân vật").required(requiredMessage),
+  name: yup.string().label("Tên nhân vật").required(requiredMessage),
   password: yup.string().label("Mật khẩu").required(requiredMessage),
 })
 
 export default function useSignIn() {
-  const methods = useForm<FieldValues>({
+  const navigate = useNavigate()
+  const methods = useForm<SignInDto>({
     defaultValues: {
-      username: "",
+      name: "",
       password: "",
     },
     resolver: yupResolver(schema),
   })
+  const { mutate, isLoading } = useMutation(
+    async (data: SignInDto) =>
+      (await API.post<string>("/auth/sign-in", data)).data
+  )
 
   const handleSubmit = methods.handleSubmit((values) => {
-    console.log(values)
+    mutate(values, {
+      onSuccess(data) {
+        setToken(data)
+        navigate("/")
+      },
+    })
   })
 
-  return { methods, handleSubmit }
+  return { methods, handleSubmit, isLoading }
 }

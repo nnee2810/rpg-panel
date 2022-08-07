@@ -1,2 +1,6 @@
+export { default as AlertMessage } from "./AlertMessage"
 export { default as Button } from "./Button"
+export { default as Collapse } from "./Collapse"
 export { default as Input } from "./Input"
+export { default as Spin } from "./Spin"
+export { default as Tag } from "./Tag"

@@ -9,7 +9,7 @@ export default function Progress({ steps, currentStep }: ProgressProps) {
       <div className="font-semibold">
         {currentStep > steps.length ? "Hoàn thành 🎉" : steps[currentStep - 1]}
       </div>
-      <div className="mt-1 h-3 bg-slate-600 rounded-md" />
+      <div className="mt-1 h-3 bg-gray-600 rounded-md" />
       <div
         style={{
           width:

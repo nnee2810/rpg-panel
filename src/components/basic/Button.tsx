@@ -1,11 +1,11 @@
+import { AnimatePresence, motion } from "framer-motion"
 import { ButtonHTMLAttributes } from "react"
-import { CgSpinner } from "react-icons/cg"
+import { Spin } from "."
 
 const buttonScheme = {
   primary:
     "bg-emerald-500 hover:bg-emerald-400 focus:bg-emerald-400 shadow-xl hover:shadow-emerald-400/50 focus:shadow-emerald-400/50",
-  slate:
-    "bg-slate-600 hover:bg-slate-500 focus:bg-slate-500 shadow-xl hover:shadow-slate-500/50 focus:shadow-slate-500/50",
+  gray: "bg-gray-600 hover:bg-gray-500 focus:bg-gray-500 shadow-xl hover:shadow-gray-500/50 focus:shadow-gray-500/50",
 }
 type ButtonScheme = keyof typeof buttonScheme
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,7 +16,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export default function Button({
   children,
   className,
-  scheme = "slate",
+  scheme = "gray",
   isLoading,
   ...props
 }: ButtonProps) {
@@ -25,12 +25,27 @@ export default function Button({
       {...props}
       disabled={isLoading}
       className={[
-        "w-full h-12 flex justify-center items-center space-x-2 rounded-md outline-0 transition duration-300",
+        "w-full h-12 flex justify-center items-center rounded-md outline-0 transition duration-300",
         `${buttonScheme[scheme]} ${isLoading ? "cursor-not-allowed" : ""}`,
         className,
       ].join(" ")}
     >
-      {isLoading && <CgSpinner className="text-xl animate-spin" />}
+      <AnimatePresence exitBeforeEnter>
+        {isLoading && (
+          <motion.div
+            initial="hide"
+            animate="show"
+            exit="hide"
+            variants={{
+              show: { opacity: 1, width: "auto" },
+              hide: { opacity: 0, width: 0 },
+            }}
+            transition={{ type: "tween", duration: 0.25 }}
+          >
+            <Spin />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="font-semibold">{children}</div>
     </button>
   )

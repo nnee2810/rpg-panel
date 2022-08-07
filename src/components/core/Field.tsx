@@ -1,7 +1,7 @@
 import { cloneElement, ReactElement } from "react"
 import { Controller, useFormContext } from "react-hook-form"
 import { AiOutlineInfoCircle } from "react-icons/ai"
-import { Collapse } from "."
+import { Collapse } from "../basic"
 
 interface FieldProps {
   name: string
@@ -44,7 +44,7 @@ export default function Field({ name, children, label, tip }: FieldProps) {
       />
       <Collapse open={!!errors?.[name]}>
         {errors?.[name] && (
-          <div className="mt-1 text-red-500 text-sm">
+          <div className="mt-1 text-red-500">
             {String(errors?.[name]?.message)}
           </div>
         )}

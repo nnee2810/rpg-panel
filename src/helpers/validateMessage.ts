@@ -7,13 +7,13 @@ enum ValidateMessage {
 }
 
 export function requiredMessage({ label }: MessageParams) {
-  return label + " " + ValidateMessage.REQUIRED
+  return [label, ValidateMessage.REQUIRED].join(" ")
 }
 
 export function invalidMessage({ label }: MessageParams) {
-  return label + " " + ValidateMessage.INVALID
+  return [label, ValidateMessage.INVALID].join(" ")
 }
 
 export function notMatchMessage({ label }: MessageParams) {
-  return label + " " + ValidateMessage.NOT_MATCH
+  return [label, ValidateMessage.NOT_MATCH].join(" ")
 }

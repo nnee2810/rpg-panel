@@ -17,8 +17,8 @@ export default function Input({ isInvalid, type, ...props }: InputProps) {
         type={
           type === "password" ? (showPassword ? "text" : "password") : "text"
         }
-        className="w-full h-12 px-4 text-white bg-slate-600 hover:bg-slate-500 focus:bg-slate-500 
-        rounded-md outline-0 shadow-xl hover:shadow-slate-500/50 focus:shadow-slate-500/50 transition duration-300"
+        className="w-full h-12 px-4 bg-gray-600 hover:bg-gray-500 focus:bg-gray-500 
+        rounded-md outline-0 shadow-xl hover:shadow-gray-500/50 focus:shadow-gray-500/50 transition duration-300"
       />
       <div
         className={`absolute top-1.5 -left-0.5 w-1 h-9 rounded transition ${

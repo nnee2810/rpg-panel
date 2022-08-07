@@ -7,7 +7,7 @@ interface CollapseProps extends PropsWithChildren {
 
 export default function Collapse({ open, children }: CollapseProps) {
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
       {open && (
         <motion.div
           initial="hide"
