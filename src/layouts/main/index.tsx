@@ -2,14 +2,16 @@ import { LoadingPage } from "components/core"
 import { getProfile } from "features/auth/services"
 import { useAppDispatch, useAppSelector, useBoolean } from "hooks"
 import { useEffect } from "react"
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import SimpleBar from "simplebar-react"
 import { setUser, userSelector } from "store/reducers/user"
+import { getPageName } from "utils/getPageName"
 import { getToken, isValidToken } from "utils/token"
 import { Header, Sidebar } from "./components"
 
 export default function MainLayout() {
   const navigate = useNavigate()
+  const location = useLocation()
   const dispatch = useAppDispatch()
   const { profile } = useAppSelector(userSelector)
   const [mounted, setMounted] = useBoolean()
@@ -34,9 +36,12 @@ export default function MainLayout() {
     <div className="h-screen bg-gray-900">
       <Header />
       <SimpleBar style={{ maxHeight: "calc(100vh - 64px)" }}>
-        <div className="flex" style={{ minHeight: "calc(100vh - 64px)" }}>
+        <div className="flex">
           <Sidebar />
-          <div className="flex-1 p-6">
+          <div className="flex-1 px-8 py-6">
+            <div className="text-xl font-semibold">
+              {getPageName(location.pathname)}
+            </div>
             <Outlet />
           </div>
         </div>

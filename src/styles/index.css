@@ -4,7 +4,10 @@
 
 body {
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 14px;
   overflow: hidden;
+}
+.simplebar-scrollbar::before {
+  background-color: white;
 }

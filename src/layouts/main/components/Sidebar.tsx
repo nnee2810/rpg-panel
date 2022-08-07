@@ -17,12 +17,12 @@ export default function Sidebar() {
       } py-4 bg-gray-800/50 transition-all duration-500`}
     >
       {menu.map((item) => (
-        <div>
+        <div key={item.name}>
           <div className="px-4 py-3 text-gray-400 text-xs font-bold truncate uppercase">
             {item.name}
           </div>
           {item?.children?.map((subItem) => (
-            <Link to={subItem.path || "#"}>
+            <Link to={subItem.path || "#"} key={subItem.name}>
               <div
                 className={`flex items-center space-x-2 px-4 py-3 text-md hover:bg-emerald-500 transition ${
                   subItem.path === location.pathname ? "bg-emerald-500" : ""
