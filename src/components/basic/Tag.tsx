@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { HTMLAttributes } from "react"
 
 const tagScheme = {
@@ -18,11 +19,11 @@ export default function Tag({
 }: TagProps) {
   return (
     <div
-      className={[
+      className={clsx(
         "w-10 min-w-max inline-block px-3 py-1 text-xs text-center rounded-md",
-        className,
         tagScheme[scheme],
-      ].join(" ")}
+        className
+      )}
     >
       {children}
     </div>

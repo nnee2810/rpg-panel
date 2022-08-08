@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { AnimatePresence, motion } from "framer-motion"
 import { ButtonHTMLAttributes } from "react"
 import { Spin } from "."
@@ -24,11 +25,12 @@ export default function Button({
     <button
       {...props}
       disabled={isLoading}
-      className={[
-        "w-full h-12 flex justify-center items-center rounded-md outline-0 transition duration-300",
-        `${buttonScheme[scheme]} ${isLoading ? "cursor-not-allowed" : ""}`,
+      className={clsx(
+        "w-full h-11 flex justify-center items-center rounded-md outline-0 transition duration-300",
         className,
-      ].join(" ")}
+        buttonScheme[scheme],
+        { "cursor-not-allowed": isLoading }
+      )}
     >
       <AnimatePresence exitBeforeEnter>
         {isLoading && (
@@ -46,7 +48,7 @@ export default function Button({
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="font-semibold">{children}</div>
+      <div className="px-4 font-semibold">{children}</div>
     </button>
   )
 }

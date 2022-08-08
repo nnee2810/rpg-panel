@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { AxiosError } from "axios"
 import AppRoutes from "components/core/AppRoutes"
 import { Message } from "configs/constants"
+import "moment/locale/vi"
 import toast, { Toaster } from "react-hot-toast"
 import { BrowserRouter } from "react-router-dom"
 

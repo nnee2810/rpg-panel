@@ -5,6 +5,7 @@ export interface IProfile {
   Respect: number
   Admin: number
   Helper: number
+  Leader: number
   Status: number
   Banned: number
   BReason: string

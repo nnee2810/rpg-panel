@@ -5,7 +5,7 @@ import { IFactionLog } from "interfaces"
 interface GetStatisticOverviewResponse {
   online: number
   registered: number
-  apartments: number
+  apartaments: number
   bizz: number
   faction_logs: IFactionLog[]
 }

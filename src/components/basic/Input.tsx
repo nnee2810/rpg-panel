@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { useBoolean } from "hooks"
 import { InputHTMLAttributes } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
@@ -17,13 +18,14 @@ export default function Input({ isInvalid, type, ...props }: InputProps) {
         type={
           type === "password" ? (showPassword ? "text" : "password") : "text"
         }
-        className="w-full h-12 px-4 bg-gray-600 hover:bg-gray-500 focus:bg-gray-500 
+        className="w-full h-11 px-4 bg-gray-600 hover:bg-gray-500 focus:bg-gray-500 
         rounded-md outline-0 shadow-xl hover:shadow-gray-500/50 focus:shadow-gray-500/50 transition duration-300"
       />
       <div
-        className={`absolute top-1.5 -left-0.5 w-1 h-9 rounded transition ${
+        className={clsx(
+          "absolute top-1.5 -left-0.5 w-1 h-9 rounded transition",
           isInvalid ? "bg-red-500" : "bg-emerald-500"
-        }`}
+        )}
       />
       {type === "password" && (
         <div

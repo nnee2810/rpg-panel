@@ -1,8 +1,10 @@
-import { Tag } from "components/basic"
-import { useAppSelector } from "hooks"
+import clsx from "clsx"
+import { Menu, Tag } from "components/basic"
+import { useAppDispatch, useAppSelector } from "hooks"
 import { IProfile } from "interfaces"
 import { LazyLoadImage } from "react-lazy-load-image-component"
-import { userSelector } from "store/reducers/user"
+import { Link } from "react-router-dom"
+import { signOut, userSelector } from "store/reducers/user"
 
 function getNameColor(profile: IProfile | null) {
   if (profile?.Admin || profile?.Helper) return "text-emerald-500"
@@ -10,6 +12,7 @@ function getNameColor(profile: IProfile | null) {
 }
 
 export default function Header() {
+  const dispatch = useAppDispatch()
   const { profile } = useAppSelector(userSelector)
 
   return (
@@ -18,9 +21,10 @@ export default function Header() {
       <div className="flex items-center space-x-2">
         <div>
           <div
-            className={`flex justify-end items-center space-x-1 text-xs  ${getNameColor(
-              profile
-            )}`}
+            className={clsx(
+              "flex justify-end items-center space-x-1 text-xs",
+              getNameColor(profile)
+            )}
           >
             <div>{profile?.name}</div>
             <div
@@ -29,9 +33,10 @@ export default function Header() {
               }-500 rounded-full`}
             >
               <div
-                className={`absolute w-full h-full bg-${
-                  profile?.Status ? "emerald" : "red"
-                }-500 rounded-full animate-ping`}
+                className={clsx(
+                  "absolute w-full h-full rounded-full animate-ping",
+                  profile?.Status ? "bg-emerald-500" : "bg-red-500"
+                )}
               ></div>
             </div>
           </div>
@@ -42,11 +47,18 @@ export default function Header() {
             </Tag>
           </div>
         </div>
-        <LazyLoadImage
-          alt="avatar"
-          src={`https://ui-avatars.com/api/?name=${profile?.name}&background=111827&color=fff`}
-          className="w-11 h-11 rounded-lg"
-        />
+        <Menu
+          button={
+            <LazyLoadImage
+              alt="avatar"
+              src={`https://ui-avatars.com/api/?name=${profile?.name}&background=111827&color=fff`}
+              className="w-11 h-11 rounded-lg"
+            />
+          }
+        >
+          <Link to={`/users/${profile?.name}`}>Thông tin cá nhân</Link>
+          <div onClick={() => dispatch(signOut())}>Đăng xuất</div>
+        </Menu>
       </div>
     </div>
   )
