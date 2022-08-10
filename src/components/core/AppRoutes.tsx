@@ -5,6 +5,8 @@ import { RouteObject, useRoutes } from "react-router-dom"
 
 const SignIn = lazy(() => import("features/auth/pages/SignIn"))
 const Home = lazy(() => import("features/home"))
+const Leaderboard = lazy(() => import("features/leaderboard"))
+
 const Online = lazy(() => import("features/online"))
 const Staff = lazy(() => import("features/staff"))
 
@@ -26,6 +28,10 @@ const routes: RouteObject[] = [
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "/leaderboard",
+        element: <Leaderboard />,
       },
       {
         path: "/online",
