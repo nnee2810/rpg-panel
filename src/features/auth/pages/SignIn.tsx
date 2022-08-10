@@ -1,7 +1,7 @@
 import { Button, Input } from "components/basic"
 import { Field } from "components/core"
 import { FormProvider } from "react-hook-form"
-import { useSignIn } from "./hooks"
+import { useSignIn } from "../hooks"
 
 export default function SignIn() {
   const { methods, handleSubmit, isLoading } = useSignIn()

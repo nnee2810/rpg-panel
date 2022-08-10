@@ -2,11 +2,16 @@ import clsx from "clsx"
 import { IconBaseProps } from "react-icons"
 import { CgSpinner } from "react-icons/cg"
 
-export default function Spin({ className, ...props }: IconBaseProps) {
+export default function Spin({
+  className,
+  fontSize = 20,
+  ...props
+}: IconBaseProps) {
   return (
     <CgSpinner
       {...props}
-      className={clsx("mr-1 text-xl animate-spin", className)}
+      fontSize={fontSize}
+      className={clsx("mr-2 animate-spin", className)}
     />
   )
 }

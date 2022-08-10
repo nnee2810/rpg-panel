@@ -6,8 +6,8 @@ import {
   AiOutlineWifi,
 } from "react-icons/ai"
 import { BsBuilding } from "react-icons/bs"
-import { News, RecentActions } from "../components"
-import { useGetStatisticOverview } from "../hooks"
+import { News, RecentActions } from "./components"
+import { useGetStatisticOverview } from "./hooks"
 
 export default function Home() {
   const { data, isLoading } = useGetStatisticOverview()

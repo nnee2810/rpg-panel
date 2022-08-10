@@ -19,6 +19,7 @@ export default function Tag({
 }: TagProps) {
   return (
     <div
+      {...props}
       className={clsx(
         "w-10 min-w-max inline-block px-3 py-1 text-xs text-center rounded-md",
         tagScheme[scheme],

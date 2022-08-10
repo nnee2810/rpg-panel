@@ -26,7 +26,7 @@ export default function Button({
       {...props}
       disabled={isLoading}
       className={clsx(
-        "w-full h-11 flex justify-center items-center rounded-md outline-0 transition duration-300",
+        "w-full h-11 flex justify-center items-center px-4 rounded-md outline-0 transition duration-300",
         className,
         buttonScheme[scheme],
         { "cursor-not-allowed": isLoading }
@@ -48,7 +48,7 @@ export default function Button({
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="px-4 font-semibold">{children}</div>
+      <div className="font-semibold">{children}</div>
     </button>
   )
 }

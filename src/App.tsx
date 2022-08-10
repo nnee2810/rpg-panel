@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { AxiosError } from "axios"
+import { LoadingPage } from "components/core"
 import AppRoutes from "components/core/AppRoutes"
 import { Message } from "configs/constants"
 import "moment/locale/vi"
+import { Suspense } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { BrowserRouter } from "react-router-dom"
 
@@ -35,7 +37,9 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <AppRoutes />
+        <Suspense fallback={<LoadingPage />}>
+          <AppRoutes />
+        </Suspense>
       </BrowserRouter>
       <Toaster
         position="top-right"

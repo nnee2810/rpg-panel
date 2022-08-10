@@ -60,7 +60,7 @@ export default function Sidebar() {
         />
         <SectionItem path="/online" name="Đang chơi" icon={<AiOutlineWifi />} />
         <SectionItem
-          path="/staffs"
+          path="/staff"
           name="Quản trị viên"
           icon={<BsShieldCheck />}
         />
@@ -129,8 +129,11 @@ function SectionItem({ icon, name, path }: SectionItemProps) {
     <Link to={path}>
       <div
         className={clsx(
-          "flex items-center space-x-2 px-4 py-3 text-md hover:bg-emerald-500 transition",
-          { "bg-emerald-500": path === location.pathname }
+          "flex items-center space-x-2 px-4 py-3 text-md hover:bg-emerald-500  transition",
+          {
+            "bg-emerald-500 shadow-xl shadow-emerald-500/50":
+              path === location.pathname,
+          }
         )}
       >
         <div className="text-xl">{icon}</div>

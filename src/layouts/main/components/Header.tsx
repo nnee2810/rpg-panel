@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { Menu, Tag } from "components/basic"
+import { Menu, Ping, Tag } from "components/basic"
 import { useAppDispatch, useAppSelector } from "hooks"
 import { IProfile } from "interfaces"
 import { LazyLoadImage } from "react-lazy-load-image-component"
@@ -22,23 +22,12 @@ export default function Header() {
         <div>
           <div
             className={clsx(
-              "flex justify-end items-center space-x-1 text-xs",
+              "flex justify-end items-center space-x-1 text-sm",
               getNameColor(profile)
             )}
           >
             <div>{profile?.name}</div>
-            <div
-              className={`relative w-1.5 h-1.5 bg-${
-                profile?.Status ? "emerald" : "red"
-              }-500 rounded-full`}
-            >
-              <div
-                className={clsx(
-                  "absolute w-full h-full rounded-full animate-ping",
-                  profile?.Status ? "bg-emerald-500" : "bg-red-500"
-                )}
-              ></div>
-            </div>
+            <Ping online={!!profile?.Status} />
           </div>
           <div>
             <Tag scheme="primary">
