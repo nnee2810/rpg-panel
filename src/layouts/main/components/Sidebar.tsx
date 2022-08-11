@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
 import { useAppDispatch, useAppSelector } from "hooks"
 import { ReactNode } from "react"
 import {
@@ -27,77 +27,87 @@ export default function Sidebar() {
   const { profile, collapsed } = useAppSelector(userSelector)
 
   return (
-    <div
-      className={clsx(
-        "relative py-4 bg-gray-800/50 transition-all duration-500",
-        collapsed ? "w-14" : "w-60"
-      )}
-    >
-      {(!!profile?.Admin || !!profile?.Leader) && (
-        <Section name="Quản lý">
-          {profile?.Admin === 7 && (
-            <SectionItem
-              path="/manage/admin"
-              name="Admin"
-              icon={<BsShieldCheck />}
-            />
-          )}
-          {!!profile?.Leader && (
-            <SectionItem
-              path="/manage/leader"
-              name="Leader"
-              icon={<BsShield />}
-            />
-          )}
-        </Section>
-      )}
-      <Section name="Điều hướng chính">
-        <SectionItem path="/" name="Trang chính" icon={<AiOutlineHome />} />
-        <SectionItem
-          path="/leaderboard"
-          name="Bảng xếp hạng"
-          icon={<AiOutlineTrophy />}
-        />
-        <SectionItem path="/online" name="Đang chơi" icon={<AiOutlineWifi />} />
-        <SectionItem
-          path="/staff"
-          name="Quản trị viên"
-          icon={<BsShieldCheck />}
-        />
-        <SectionItem
-          path="/factions"
-          name="Faction"
-          icon={<AiOutlineApartment />}
-        />
-        <SectionItem path="/clans" name="Clan" icon={<BsPeople />} />
-        <SectionItem path="/shop" name="Cửa hàng" icon={<AiOutlineShop />} />
-        <SectionItem path="/donate" name="Nạp lần đầu" icon={<BsCashCoin />} />
-        <SectionItem
-          path="/denounces"
-          name="Tố cáo"
-          icon={<AiOutlineAudit />}
-        />
-        <SectionItem
-          path="/supports"
-          name="Hỗ trợ"
-          icon={<IoTicketOutline />}
-        />
-        <SectionItem
-          path="/bans"
-          name="Cấm chơi"
-          icon={<AiOutlineUserDelete />}
-        />
-      </Section>
+    <LayoutGroup>
       <div
         className={clsx(
-          "absolute top-5 -right-4 p-2 bg-gray-800 text-lg rounded-full transition duration-500 cursor-pointer hover:bg-gray-700",
-          { "rotate-180": !collapsed }
+          "relative py-4 bg-gray-800/50 transition-all duration-500",
+          collapsed ? "w-14" : "w-60"
         )}
-        onClick={() => dispatch(toggleSidebar())}
       >
-        <BsArrowRight />
+        {(!!profile?.Admin || !!profile?.Leader) && (
+          <Section name="Quản lý">
+            {profile?.Admin === 7 && (
+              <SectionItem
+                path="/manage/admin"
+                name="Admin"
+                icon={<BsShieldCheck />}
+              />
+            )}
+            {!!profile?.Leader && (
+              <SectionItem
+                path="/manage/leader"
+                name="Leader"
+                icon={<BsShield />}
+              />
+            )}
+          </Section>
+        )}
+        <Section name="Điều hướng chính">
+          <SectionItem path="/" name="Trang chính" icon={<AiOutlineHome />} />
+          <SectionItem
+            path="/leaderboard"
+            name="Bảng xếp hạng"
+            icon={<AiOutlineTrophy />}
+          />
+          <SectionItem
+            path="/online"
+            name="Đang chơi"
+            icon={<AiOutlineWifi />}
+          />
+          <SectionItem
+            path="/staff"
+            name="Quản trị viên"
+            icon={<BsShieldCheck />}
+          />
+          <SectionItem
+            path="/factions"
+            name="Faction"
+            icon={<AiOutlineApartment />}
+          />
+          <SectionItem path="/clans" name="Clan" icon={<BsPeople />} />
+          <SectionItem path="/shop" name="Cửa hàng" icon={<AiOutlineShop />} />
+          <SectionItem
+            path="/donate"
+            name="Nạp lần đầu"
+            icon={<BsCashCoin />}
+          />
+          <SectionItem
+            path="/denounces"
+            name="Tố cáo"
+            icon={<AiOutlineAudit />}
+          />
+          <SectionItem
+            path="/supports"
+            name="Hỗ trợ"
+            icon={<IoTicketOutline />}
+          />
+          <SectionItem
+            path="/bans"
+            name="Cấm chơi"
+            icon={<AiOutlineUserDelete />}
+          />
+        </Section>
+        <div
+          className={clsx(
+            "absolute top-5 -right-4 p-2 bg-gray-800 text-lg rounded-full transition duration-500 cursor-pointer hover:bg-gray-700",
+            { "rotate-180": !collapsed }
+          )}
+          onClick={() => dispatch(toggleSidebar())}
+        >
+          <BsArrowRight />
+        </div>
       </div>
-    </div>
+    </LayoutGroup>
   )
 }
 
@@ -129,13 +139,16 @@ function SectionItem({ icon, name, path }: SectionItemProps) {
     <Link to={path}>
       <div
         className={clsx(
-          "flex items-center space-x-2 px-4 py-3 text-md hover:bg-emerald-500  transition",
-          {
-            "bg-emerald-500 shadow-xl shadow-emerald-500/50":
-              path === location.pathname,
-          }
+          "relative h-12 px-4 flex items-center text-md hover:bg-gray-700 transition",
+          { "bg-gradient-to-l from-emerald-500": path === location.pathname }
         )}
       >
+        {path === location.pathname && (
+          <motion.div
+            layoutId="outline"
+            className="absolute left-0 w-1 h-full bg-emerald-500"
+          />
+        )}
         <div className="text-xl">{icon}</div>
         <AnimatePresence exitBeforeEnter>
           {!collapsed && (
@@ -147,8 +160,7 @@ function SectionItem({ icon, name, path }: SectionItemProps) {
                 show: { opacity: 1 },
                 hide: { opacity: 0 },
               }}
-              transition={{ type: "tween", duration: 0.5 }}
-              className="truncate"
+              className="ml-2 truncate"
             >
               {name}
             </motion.div>

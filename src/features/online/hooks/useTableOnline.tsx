@@ -35,7 +35,7 @@ export default function useTableOnline() {
         accessorKey: "Level",
       },
       {
-        header: "Tổ chức",
+        header: "Faction",
         accessorFn: ({ Member }) => (Member ? factions[Member].name : "-"),
       },
       {

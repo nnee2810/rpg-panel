@@ -10,3 +10,8 @@ body {
 .simplebar-scrollbar::before {
   background-color: white;
 }
+
+*::selection {
+  background-color: #10b981;
+  color: #fff;
+}

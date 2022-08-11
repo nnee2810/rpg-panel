@@ -1,8 +1,8 @@
 import { Spin, Table } from "components/basic"
-import { useTableHelper } from "../hooks"
+import { useTableFactions } from "../hooks"
 
-export default function TableAdmin() {
-  const { getHeaderGroups, getRowModel, isLoading } = useTableHelper()
+export default function TableFactions() {
+  const { getHeaderGroups, getRowModel, isLoading } = useTableFactions()
   return isLoading ? (
     <div className="flex justify-center">
       <Spin className="text-4xl" />

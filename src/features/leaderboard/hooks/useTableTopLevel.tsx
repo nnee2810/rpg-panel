@@ -19,19 +19,29 @@ export default function useTableTopLevel() {
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [
       {
+        header: "Hạng",
+        cell: ({ row: { index } }) => (
+          <>
+            <span className="text-xl">
+              {index === 0 && "🥇"}
+              {index === 1 && "🥈"}
+              {index === 2 && "🥉"}
+            </span>
+            {index > 2 && <span className="pl-2">{index + 1}</span>}
+          </>
+        ),
+      },
+      {
         header: "Tên",
         cell: ({
           row: {
             original: { name, Status },
-            index,
           },
         }) => (
           <div className="flex items-center space-x-2">
             <Ping online={!!Status} />
             <Link to={`/users/${name}`} className="text-emerald-500">
-              {name} {index === 0 && <span>🥇</span>}
-              {index === 1 && <span>🥈</span>}
-              {index === 2 && <span>🥉</span>}
+              {name}
             </Link>
           </div>
         ),
