@@ -145,7 +145,7 @@ function SectionItem({ icon, name, path }: SectionItemProps) {
       >
         {path === location.pathname && (
           <motion.div
-            layoutId="outline"
+            layoutId="sidebar"
             className="absolute left-0 w-1 h-full bg-emerald-500"
           />
         )}

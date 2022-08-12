@@ -1,4 +1,6 @@
-export interface GetUsersDto {
+import { PaginationDto } from "dto"
+
+export interface GetUsersDto extends PaginationDto {
   name?: string
   Status?: number
   Admin?: number

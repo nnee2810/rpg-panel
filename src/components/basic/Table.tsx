@@ -32,9 +32,14 @@ const TableWrapper = styled.div`
 interface TableProps<T> {
   headerGroup: HeaderGroup<T>[]
   rowModel: RowModel<T>
+  isLoading?: boolean
 }
 
-export default function Table<T>({ headerGroup, rowModel }: TableProps<T>) {
+export default function Table<T>({
+  headerGroup,
+  rowModel,
+  isLoading,
+}: TableProps<T>) {
   return (
     <TableWrapper>
       <table>

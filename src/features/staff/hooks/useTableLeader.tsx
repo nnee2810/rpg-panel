@@ -5,13 +5,18 @@ import {
 } from "@tanstack/react-table"
 import { Ping } from "components/basic"
 import { factions } from "configs/constants"
+import { GetUsersDto } from "features/admin/dto"
 import { useGetUsers } from "features/admin/hooks"
 import { IUser } from "interfaces"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function useTableLeader() {
-  const { data = [], isLoading } = useGetUsers({ isLeader: true })
+  const [query, setQuery] = useState<GetUsersDto>({
+    isLeader: true,
+    page: 1,
+  })
+  const { data, isLoading } = useGetUsers(query)
 
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [
@@ -43,9 +48,12 @@ export default function useTableLeader() {
   )
   const { getHeaderGroups, getRowModel } = useReactTable<IUser>({
     columns,
-    data,
+    data: data?.data || [],
     getCoreRowModel: getCoreRowModel(),
   })
+  const handleChangePage = (page: number) => {
+    setQuery({ ...query, page })
+  }
 
-  return { getHeaderGroups, getRowModel, isLoading }
+  return { getHeaderGroups, getRowModel, data, isLoading, handleChangePage }
 }

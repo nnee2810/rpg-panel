@@ -23,7 +23,7 @@ export default function Tabs({ tabs, children }: TabsProps) {
                 >
                   {selected && (
                     <motion.div
-                      layoutId="outline"
+                      layoutId="tabs"
                       className="absolute top-0 left-0 w-full h-full bg-emerald-500 shadow-xl shadow-emerald-500/50 rounded-md z-0"
                     />
                   )}

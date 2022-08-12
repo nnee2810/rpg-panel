@@ -4,13 +4,18 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 import { Ping } from "components/basic"
+import { GetUsersDto } from "features/admin/dto"
 import { useGetUsers } from "features/admin/hooks"
 import { IUser } from "interfaces"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function useTableHelper() {
-  const { data = [], isLoading } = useGetUsers({ isHelper: true })
+  const [query, setQuery] = useState<GetUsersDto>({
+    isHelper: true,
+    page: 1,
+  })
+  const { data, isLoading } = useGetUsers(query)
 
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [
@@ -42,9 +47,12 @@ export default function useTableHelper() {
   )
   const { getHeaderGroups, getRowModel } = useReactTable<IUser>({
     columns,
-    data,
+    data: data?.data || [],
     getCoreRowModel: getCoreRowModel(),
   })
+  const handleChangePage = (page: number) => {
+    setQuery({ ...query, page })
+  }
 
-  return { getHeaderGroups, getRowModel, isLoading }
+  return { getHeaderGroups, getRowModel, data, isLoading, handleChangePage }
 }
