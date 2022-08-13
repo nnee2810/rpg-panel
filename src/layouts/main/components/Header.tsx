@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import { Menu, Ping, Tag } from "components/basic"
+import { IProfile } from "features/users/interfaces"
 import { useAppDispatch, useAppSelector } from "hooks"
-import { IProfile } from "interfaces"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { Link } from "react-router-dom"
 import { signOut, userSelector } from "store/reducers/user"
@@ -45,7 +45,7 @@ export default function Header() {
             />
           }
         >
-          <Link to={`/users/${profile?.name}`}>Thông tin cá nhân</Link>
+          <Link to={`/users/profile/${profile?.name}`}>Hồ sơ</Link>
           <div onClick={() => dispatch(signOut())}>Đăng xuất</div>
         </Menu>
       </div>

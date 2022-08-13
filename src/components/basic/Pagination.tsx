@@ -26,7 +26,7 @@ export default function Pagination({
     onPageChange(currentPage - 1)
   }
 
-  return (
+  return totalPage ? (
     <LayoutGroup>
       <div className="mt-4 flex justify-center gap-x-2">
         <button
@@ -66,5 +66,5 @@ export default function Pagination({
         </button>
       </div>
     </LayoutGroup>
-  )
+  ) : null
 }

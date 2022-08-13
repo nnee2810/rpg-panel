@@ -6,10 +6,10 @@ import {
 } from "@tanstack/react-table"
 import { API } from "configs/api"
 import { useAppSelector } from "hooks"
-import { IFaction } from "interfaces"
 import { useMemo } from "react"
 import { Link } from "react-router-dom"
 import { userSelector } from "store/reducers/user"
+import { IFaction } from "../interfaces"
 
 export default function useTableFactions() {
   const { profile } = useAppSelector(userSelector)

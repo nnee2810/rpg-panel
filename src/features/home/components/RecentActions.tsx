@@ -1,4 +1,4 @@
-import { IFactionLog } from "interfaces"
+import { IFactionLog } from "features/factions/interfaces"
 import moment from "moment"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { Link } from "react-router-dom"

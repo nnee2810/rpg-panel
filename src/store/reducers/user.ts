@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { IProfile } from "interfaces"
+import { IProfile } from "features/users/interfaces"
 import { RootState } from "store"
 
 interface UserState {

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { API } from "configs/api"
-import { IFactionLog } from "interfaces"
+import { IFactionLog } from "features/factions/interfaces"
 
 interface GetStatisticOverviewResponse {
   online: number

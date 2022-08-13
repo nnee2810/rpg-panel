@@ -7,7 +7,8 @@ import {
 import { Ping } from "components/basic"
 import { API } from "configs/api"
 import currency from "currency.js"
-import { IUser } from "interfaces"
+import { IUser } from "features/users/interfaces"
+
 import { useMemo } from "react"
 import { Link } from "react-router-dom"
 

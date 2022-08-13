@@ -5,9 +5,9 @@ import {
 } from "@tanstack/react-table"
 import { Ping } from "components/basic"
 import { factions } from "configs/constants"
-import { GetUsersDto } from "features/admin/dto"
-import { useGetUsers } from "features/admin/hooks"
-import { IUser } from "interfaces"
+import { GetUsersDto } from "features/users/dto"
+import { useGetUsers } from "features/users/hooks"
+import { IUser } from "features/users/interfaces"
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 
