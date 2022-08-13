@@ -1,4 +1,4 @@
-import { Card, Spin } from "components/basic"
+import { Spin } from "components/basic"
 import { PageTitle } from "components/core"
 import {
   AiOutlineHome,
@@ -6,7 +6,7 @@ import {
   AiOutlineWifi,
 } from "react-icons/ai"
 import { BsBuilding } from "react-icons/bs"
-import { News, RecentActions } from "./components"
+import { Card, News, RecentActions } from "./components"
 import { useGetStatisticOverview } from "./hooks"
 
 export default function Home() {

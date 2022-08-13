@@ -1,22 +1,20 @@
-import { useQuery } from "@tanstack/react-query"
 import {
   ColumnDef,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { API } from "configs/api"
+import { PaginationDto } from "dto"
 import { useAppSelector } from "hooks"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { userSelector } from "store/reducers/user"
+import { useGetFactions } from "."
 import { IFaction } from "../interfaces"
 
 export default function useTableFactions() {
   const { profile } = useAppSelector(userSelector)
-  const { data = [], isLoading } = useQuery(
-    ["get-factions"],
-    async () => (await API.get<IFaction[]>("/factions")).data
-  )
+  const [query, setQuery] = useState<PaginationDto>({})
+  const { data, isLoading, isFetching } = useGetFactions(query)
 
   const columns = useMemo<ColumnDef<IFaction>[]>(
     () => [
@@ -65,9 +63,18 @@ export default function useTableFactions() {
   )
   const { getHeaderGroups, getRowModel } = useReactTable<IFaction>({
     columns,
-    data,
+    data: data?.data || [],
     getCoreRowModel: getCoreRowModel(),
   })
+  const handleChangePage = (page: number) => {
+    setQuery({ ...query, page })
+  }
 
-  return { getHeaderGroups, getRowModel, isLoading }
+  return {
+    getHeaderGroups,
+    getRowModel,
+    data,
+    isLoading: isLoading || isFetching,
+    handleChangePage,
+  }
 }

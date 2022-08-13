@@ -13,9 +13,8 @@ import { Link } from "react-router-dom"
 export default function useTableHelper() {
   const [query, setQuery] = useState<GetUsersDto>({
     isHelper: true,
-    page: 1,
   })
-  const { data, isLoading } = useGetUsers(query)
+  const { data, isLoading, isFetching } = useGetUsers(query)
 
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [
@@ -54,5 +53,11 @@ export default function useTableHelper() {
     setQuery({ ...query, page })
   }
 
-  return { getHeaderGroups, getRowModel, data, isLoading, handleChangePage }
+  return {
+    getHeaderGroups,
+    getRowModel,
+    data,
+    isLoading: isLoading || isFetching,
+    handleChangePage,
+  }
 }

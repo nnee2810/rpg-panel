@@ -1,11 +1,13 @@
 import { flexRender, HeaderGroup, RowModel } from "@tanstack/react-table"
+import { AnimatePresence, motion } from "framer-motion"
 import styled from "styled-components"
+import Spin from "./Spin"
 
 const TableWrapper = styled.div`
   table {
     width: 100%;
     border-radius: 6px;
-    background-color: rgb(31, 41, 55);
+    overflow: hidden;
   }
   th,
   td {
@@ -21,11 +23,11 @@ const TableWrapper = styled.div`
     text-align: right;
   }
   td {
-    border-top: 1px solid rgba(55, 65, 81, 0.75);
+    border-top: 1px solid rgba(55, 65, 81, 0.5);
   }
   th:not(th:last-child),
   td:not(td:last-child) {
-    border-right: 1px solid rgb(55, 65, 81, 0.75);
+    border-right: 1px solid rgb(55, 65, 81, 0.5);
   }
 `
 
@@ -41,9 +43,9 @@ export default function Table<T>({
   isLoading,
 }: TableProps<T>) {
   return (
-    <TableWrapper>
+    <TableWrapper className="relative">
       <table>
-        <thead>
+        <thead className="bg-gray-700/75">
           {headerGroup.map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -59,7 +61,7 @@ export default function Table<T>({
             </tr>
           ))}
         </thead>
-        <tbody>
+        <tbody className="bg-gray-800">
           {rowModel.rows.map((row) => (
             <tr key={row.id}>
               {row.getVisibleCells().map((cell) => (
@@ -71,6 +73,22 @@ export default function Table<T>({
           ))}
         </tbody>
       </table>
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial="hide"
+            animate="show"
+            exit="hide"
+            variants={{
+              show: { opacity: 1 },
+              hide: { opacity: 0 },
+            }}
+            className="absolute top-0 w-full h-full flex justify-center items-center bg-gray-800/75"
+          >
+            <Spin className="text-4xl" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </TableWrapper>
   )
 }

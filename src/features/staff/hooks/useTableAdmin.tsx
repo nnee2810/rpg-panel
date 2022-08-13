@@ -14,9 +14,8 @@ import { Link } from "react-router-dom"
 export default function useTableAdmin() {
   const [query, setQuery] = useState<GetUsersDto>({
     isAdmin: true,
-    page: 1,
   })
-  const { data, isLoading } = useGetUsers(query)
+  const { data, isLoading, isFetching } = useGetUsers(query)
 
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [
@@ -55,5 +54,11 @@ export default function useTableAdmin() {
     setQuery({ ...query, page })
   }
 
-  return { getHeaderGroups, getRowModel, data, isLoading, handleChangePage }
+  return {
+    getHeaderGroups,
+    getRowModel,
+    data,
+    isLoading: isLoading || isFetching,
+    handleChangePage,
+  }
 }

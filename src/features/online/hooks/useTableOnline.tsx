@@ -15,7 +15,6 @@ import { Link } from "react-router-dom"
 export default function useTableOnline() {
   const [query, setQuery] = useState<GetUsersDto>({
     Status: 1,
-    page: 1,
   })
   const { data, isLoading } = useGetUsers(query)
 

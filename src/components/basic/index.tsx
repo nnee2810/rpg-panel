@@ -1,6 +1,5 @@
 export { default as AlertMessage } from "./AlertMessage"
 export { default as Button } from "./Button"
-export { default as Card } from "./Card"
 export { default as Collapse } from "./Collapse"
 export { default as Input } from "./Input"
 export { default as Menu } from "./Menu"
