@@ -28,7 +28,7 @@ export default function useTableLeader() {
         }) => (
           <div className="flex items-center space-x-2">
             <Ping online={!!Status} />
-            <Link to={`/users/${name}`} className="text-emerald-500">
+            <Link to={`/users/profile/${name}`} className="text-emerald-500">
               {name}
             </Link>
           </div>
@@ -36,7 +36,7 @@ export default function useTableLeader() {
       },
       {
         header: "Faction",
-        accessorFn: ({ Leader }) => factions[Leader].name,
+        accessorFn: ({ Leader }) => factions[Leader - 1].name,
       },
       {
         header: "Đăng nhập lần cuối",

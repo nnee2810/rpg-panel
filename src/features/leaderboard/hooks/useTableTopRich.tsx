@@ -17,7 +17,11 @@ interface IUserWithTotalMoney extends IUser {
 }
 
 export default function useTableTopRich() {
-  const { data = [], isLoading } = useQuery(
+  const {
+    data = [],
+    isLoading,
+    isFetching,
+  } = useQuery(
     ["get-statistic-top-rich"],
     async () =>
       (await API.get<IUserWithTotalMoney[]>("/statistic/top-rich")).data
@@ -47,7 +51,7 @@ export default function useTableTopRich() {
         }) => (
           <div className="flex items-center space-x-2">
             <Ping online={!!Status} />
-            <Link to={`/users/${name}`} className="text-emerald-500">
+            <Link to={`/users/profile/${name}`} className="text-emerald-500">
               {name}
             </Link>
           </div>
@@ -71,5 +75,5 @@ export default function useTableTopRich() {
     getCoreRowModel: getCoreRowModel(),
   })
 
-  return { getHeaderGroups, getRowModel, isLoading }
+  return { getHeaderGroups, getRowModel, isLoading: isLoading || isFetching }
 }

@@ -12,7 +12,7 @@ export default function SignIn() {
         <div>
           Trang quản lý của <b>SA-MP RPG</b>
         </div>
-        <div className="text-3xl font-bold ">
+        <div className="text-3xl font-bold">
           ĐĂNG NHẬP<span className="animate-ping">_</span>
         </div>
       </div>

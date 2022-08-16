@@ -38,7 +38,7 @@ function renderText(text: string) {
 
   return (
     <>
-      <Link to={`/users/${playerName}`} className="text-emerald-500">
+      <Link to={`/users/profile/${playerName}`} className="text-emerald-500">
         {playerName}
       </Link>{" "}
       {leaderNameIdx < 1 ? (
@@ -46,7 +46,10 @@ function renderText(text: string) {
       ) : (
         <>
           {words.slice(0, leaderNameIdx).join(" ")}{" "}
-          <Link to={`/users/${leaderName}`} className="text-emerald-500">
+          <Link
+            to={`/users/profile/${leaderName}`}
+            className="text-emerald-500"
+          >
             {leaderName}
           </Link>{" "}
           {words.slice(leaderNameIdx + 2).join(" ")}

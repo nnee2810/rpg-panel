@@ -11,7 +11,11 @@ import { useMemo } from "react"
 import { Link } from "react-router-dom"
 
 export default function useTableTopLevel() {
-  const { data = [], isLoading } = useQuery(
+  const {
+    data = [],
+    isLoading,
+    isFetching,
+  } = useQuery(
     ["get-statistic-top-level"],
     async () => (await API.get<IUser[]>("/statistic/top-level")).data
   )
@@ -40,7 +44,7 @@ export default function useTableTopLevel() {
         }) => (
           <div className="flex items-center space-x-2">
             <Ping online={!!Status} />
-            <Link to={`/users/${name}`} className="text-emerald-500">
+            <Link to={`/users/profile/${name}`} className="text-emerald-500">
               {name}
             </Link>
           </div>
@@ -63,5 +67,5 @@ export default function useTableTopLevel() {
     getCoreRowModel: getCoreRowModel(),
   })
 
-  return { getHeaderGroups, getRowModel, isLoading }
+  return { getHeaderGroups, getRowModel, isLoading: isLoading || isFetching }
 }

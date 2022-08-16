@@ -9,9 +9,14 @@ import { API } from "configs/api"
 import { IUser } from "features/users/interfaces"
 import { useMemo } from "react"
 import { Link } from "react-router-dom"
+import { formatConnectedTime } from "utils"
 
 export default function useTableTopConnectedTime() {
-  const { data = [], isLoading } = useQuery(
+  const {
+    data = [],
+    isLoading,
+    isFetching,
+  } = useQuery(
     ["get-statistic-top-connected-time"],
     async () => (await API.get<IUser[]>("/statistic/top-connected-time")).data
   )
@@ -40,7 +45,7 @@ export default function useTableTopConnectedTime() {
         }) => (
           <div className="flex items-center space-x-2">
             <Ping online={!!Status} />
-            <Link to={`/users/${name}`} className="text-emerald-500">
+            <Link to={`/users/profile/${name}`} className="text-emerald-500">
               {name}
             </Link>
           </div>
@@ -48,10 +53,7 @@ export default function useTableTopConnectedTime() {
       },
       {
         header: "Thời gian chơi",
-        accessorFn: ({ ConnectedTime }) =>
-          `${Math.floor(ConnectedTime)} giờ ${Math.round(
-            (ConnectedTime - Math.floor(ConnectedTime)) * 60
-          )} phút`,
+        accessorFn: ({ ConnectedTime }) => formatConnectedTime(ConnectedTime),
       },
       {
         header: "Đăng nhập lần cuối",
@@ -66,5 +68,5 @@ export default function useTableTopConnectedTime() {
     getCoreRowModel: getCoreRowModel(),
   })
 
-  return { getHeaderGroups, getRowModel, isLoading }
+  return { getHeaderGroups, getRowModel, isLoading: isLoading || isFetching }
 }

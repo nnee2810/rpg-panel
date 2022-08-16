@@ -11,7 +11,12 @@ export default function Leaderboard() {
     <div>
       <PageTitle>Bảng xếp hạng</PageTitle>
       <Tabs
-        tabs={["Top level", "Top giàu có", "Top giờ chơi", "Top nạp lần đầu"]}
+        tabs={[
+          { label: "Top level" },
+          { label: "Top giàu có" },
+          { label: "Top giờ chơi" },
+          { label: "Top nạp lần đầu" },
+        ]}
       >
         <TableTopLevel />
         <TableTopRich />

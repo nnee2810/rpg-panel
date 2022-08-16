@@ -6,7 +6,9 @@ export default function Staff() {
   return (
     <div>
       <PageTitle>Quản trị viên</PageTitle>
-      <Tabs tabs={["Admin", "Helper", "Leader"]}>
+      <Tabs
+        tabs={[{ label: "Admin" }, { label: "Helper" }, { label: "Leader" }]}
+      >
         <TableAdmin />
         <TableHelper />
         <TableLeader />

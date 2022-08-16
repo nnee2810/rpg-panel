@@ -4,6 +4,7 @@ import { HTMLAttributes } from "react"
 const tagScheme = {
   primary: "bg-emerald-500",
   gray: "bg-gray-600",
+  red: "bg-red-600",
 }
 type TagScheme = keyof typeof tagScheme
 
@@ -21,7 +22,7 @@ export default function Tag({
     <div
       {...props}
       className={clsx(
-        "w-10 min-w-max inline-block px-3 py-1 text-xs text-center rounded-md",
+        "w-10 min-w-max inline-block px-2 py-0.5 text-sm text-center rounded-md",
         tagScheme[scheme],
         className
       )}

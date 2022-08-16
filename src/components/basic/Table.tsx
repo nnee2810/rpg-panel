@@ -1,5 +1,6 @@
 import { flexRender, HeaderGroup, RowModel } from "@tanstack/react-table"
 import { AnimatePresence, motion } from "framer-motion"
+import { AiOutlineInfoCircle } from "react-icons/ai"
 import styled from "styled-components"
 import Spin from "./Spin"
 
@@ -62,15 +63,29 @@ export default function Table<T>({
           ))}
         </thead>
         <tbody className="bg-gray-800">
-          {rowModel.rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
+          {rowModel.rows.length
+            ? rowModel.rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            : !isLoading && (
+                <tr>
+                  <td colSpan={headerGroup[0].headers.length} className="h-40">
+                    <div className="flex flex-col items-center">
+                      <AiOutlineInfoCircle className="text-3xl" />
+                      <div className="text-center">Không có dữ liệu</div>
+                    </div>
+                  </td>
+                </tr>
+              )}
         </tbody>
       </table>
       <AnimatePresence>

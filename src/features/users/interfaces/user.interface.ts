@@ -1,3 +1,5 @@
+import { IClan } from "features/clans/interfaces"
+
 export interface IUser {
   Level: number
   Bank: number
@@ -273,4 +275,7 @@ export interface IUser {
   CarKey9: number
   CarKey10: number
   RewardTime: number
+  JobName: string
+  ReferralName: string
+  clan: IClan
 }

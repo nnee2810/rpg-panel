@@ -32,11 +32,7 @@ export default function Home() {
               label="Đã đăng ký"
               value={data.registered}
             />
-            <Card
-              icon={<AiOutlineHome />}
-              label="House"
-              value={data.apartaments}
-            />
+            <Card icon={<AiOutlineHome />} label="House" value={data.houses} />
             <Card icon={<BsBuilding />} label="Bizz" value={data.bizz} />
           </div>
           <div className="mt-4 grid grid-cols-4 gap-4 items-start">

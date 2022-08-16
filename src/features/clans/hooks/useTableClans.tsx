@@ -42,7 +42,7 @@ export default function useTableClans() {
             original: { Owner },
           },
         }) => (
-          <Link to={`/users/${Owner}`} className="text-emerald-500">
+          <Link to={`/users/profile/${Owner}`} className="text-emerald-500">
             {Owner}
           </Link>
         ),

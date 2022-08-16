@@ -3,8 +3,13 @@ import clsx from "clsx"
 import { LayoutGroup, motion } from "framer-motion"
 import { Children, Fragment, ReactNode } from "react"
 
+interface TabItem {
+  label: string
+  icon?: ReactNode
+}
+
 interface TabsProps {
-  tabs: string[]
+  tabs: TabItem[]
   children: ReactNode
 }
 
@@ -14,7 +19,7 @@ export default function Tabs({ tabs, children }: TabsProps) {
       <LayoutGroup>
         <Tab.List className="flex bg-gray-800 rounded-md">
           {tabs.map((tab) => (
-            <Tab as={Fragment} key={tab}>
+            <Tab as={Fragment} key={tab.label}>
               {({ selected }) => (
                 <div
                   className={clsx(
@@ -27,8 +32,9 @@ export default function Tabs({ tabs, children }: TabsProps) {
                       className="absolute top-0 left-0 w-full h-full bg-emerald-500 shadow-xl shadow-emerald-500/50 rounded-md z-0"
                     />
                   )}
-                  <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10">
-                    {tab}
+                  <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center space-x-1 z-10">
+                    <div className="text-xl">{tab.icon}</div>
+                    <div>{tab.label}</div>
                   </div>
                 </div>
               )}
