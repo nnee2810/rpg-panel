@@ -275,7 +275,5 @@ export interface IUser {
   CarKey9: number
   CarKey10: number
   RewardTime: number
-  JobName: string
-  ReferralName: string
   clan: IClan
 }

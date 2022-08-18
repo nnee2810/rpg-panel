@@ -1,7 +1,7 @@
 import AuthLayout from "layouts/auth"
 import MainLayout from "layouts/main"
 import { lazy } from "react"
-import { RouteObject, useRoutes } from "react-router-dom"
+import { Navigate, RouteObject, useRoutes } from "react-router-dom"
 
 const SignIn = lazy(() => import("features/auth/pages/SignIn"))
 const Home = lazy(() => import("features/home"))
@@ -56,6 +56,10 @@ const routes: RouteObject[] = [
         children: [{ path: "profile/:name", element: <UserProfile /> }],
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
   },
 ]
 export default function AppRoutes() {

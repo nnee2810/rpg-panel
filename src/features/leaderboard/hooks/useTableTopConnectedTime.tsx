@@ -9,7 +9,7 @@ import { API } from "configs/api"
 import { IUser } from "features/users/interfaces"
 import { useMemo } from "react"
 import { Link } from "react-router-dom"
-import { formatConnectedTime } from "utils"
+import { formatConnectedTime } from "utils/format"
 
 export default function useTableTopConnectedTime() {
   const {

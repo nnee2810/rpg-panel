@@ -1,4 +1,4 @@
-import { Spin } from "components/basic"
+import { Empty, Spin } from "components/basic"
 import { PageTitle } from "components/core"
 import {
   AiOutlineHome,
@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </>
       ) : (
-        <div className="text-center">Không có dữ liệu</div>
+        <Empty />
       )}
     </div>
   )

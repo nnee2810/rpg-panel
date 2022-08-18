@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <div className="sticky top-0 h-16 px-8 flex justify-between items-center bg-gray-800 z-10">
-      <div>Logo</div>
+      <Link to="/">Logo</Link>
       <div className="flex items-center space-x-2">
         <div>
           <div

@@ -1,6 +1,6 @@
 import { BasicTable, Ping, Tag } from "components/basic"
-import { factions } from "configs/constants"
-import { formatConnectedTime } from "utils"
+import { factions, jobs } from "configs/constants"
+import { formatConnectedTime } from "utils/format"
 import { IUser } from "../interfaces"
 
 interface ProfileOverviewProps {
@@ -58,7 +58,7 @@ export default function ProfileOverview({ data }: ProfileOverviewProps) {
         </tr>
         <tr>
           <td>Công việc</td>
-          <td>{data.Job ? data.JobName : "-"}</td>
+          <td>{data.Job ? jobs[data.Job - 1].name : "-"}</td>
         </tr>
         <tr>
           <td>Số điện thoại</td>

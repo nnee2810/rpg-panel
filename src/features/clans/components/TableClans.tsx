@@ -1,4 +1,4 @@
-import { Pagination, Spin, Table } from "components/basic"
+import { Empty, Pagination, Spin, Table } from "components/basic"
 import { useTableClans } from "../hooks"
 
 export default function TableClans() {
@@ -19,6 +19,6 @@ export default function TableClans() {
       />
     </div>
   ) : (
-    <div className="text-center">Không có dữ liệu</div>
+    <Empty />
   )
 }

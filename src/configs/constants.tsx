@@ -2,11 +2,12 @@ export enum Message {
   INTERNAL_SERVER_ERROR = "Không thể xử lý yêu cầu, vui lòng thử lại sau",
 }
 
-interface Faction {
+interface IFaction {
   id: number
   name: string
 }
-export const factions: Faction[] = [
+
+export const factions: IFaction[] = [
   {
     id: 1,
     name: "Los Santos Police Departament",

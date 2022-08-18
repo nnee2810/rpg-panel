@@ -1,36 +1,8 @@
 import { flexRender, HeaderGroup, RowModel } from "@tanstack/react-table"
+import clsx from "clsx"
 import { AnimatePresence, motion } from "framer-motion"
-import { AiOutlineInfoCircle } from "react-icons/ai"
-import styled from "styled-components"
+import Empty from "./Empty"
 import Spin from "./Spin"
-
-const TableWrapper = styled.div`
-  table {
-    width: 100%;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  th,
-  td {
-    text-align: center;
-    padding: 16px;
-  }
-  th:first-child,
-  td:first-child {
-    text-align: left;
-  }
-  th:last-child,
-  td:last-child {
-    text-align: right;
-  }
-  td {
-    border-top: 1px solid rgba(55, 65, 81, 0.5);
-  }
-  th:not(th:last-child),
-  td:not(td:last-child) {
-    border-right: 1px solid rgb(55, 65, 81, 0.5);
-  }
-`
 
 interface TableProps<T> {
   headerGroup: HeaderGroup<T>[]
@@ -44,13 +16,18 @@ export default function Table<T>({
   isLoading,
 }: TableProps<T>) {
   return (
-    <TableWrapper className="relative">
-      <table>
-        <thead className="bg-gray-700/75">
+    <div className="relative">
+      <table className="w-full bg-gray-800 rounded-md overflow-hidden">
+        <thead>
           {headerGroup.map((headerGroup) => (
             <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+              {headerGroup.headers.map((header, idx) => (
+                <th
+                  className={clsx("p-4 border-gray-700/50", {
+                    "border-l": idx,
+                  })}
+                  key={header.id}
+                >
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -62,27 +39,31 @@ export default function Table<T>({
             </tr>
           ))}
         </thead>
-        <tbody className="bg-gray-800">
+        <tbody>
           {rowModel.rows.length
             ? rowModel.rows.map((row) => (
                 <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                  {row.getVisibleCells().map((cell, idx) => (
+                    <td
+                      className={clsx("p-4 border-t border-gray-700/50", {
+                        "border-l": idx,
+                      })}
+                      key={cell.id}
+                    >
+                      <div className="flex justify-center items-center">
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </div>
                     </td>
                   ))}
                 </tr>
               ))
             : !isLoading && (
                 <tr>
-                  <td colSpan={headerGroup[0].headers.length} className="h-40">
-                    <div className="flex flex-col items-center">
-                      <AiOutlineInfoCircle className="text-3xl" />
-                      <div className="text-center">Không có dữ liệu</div>
-                    </div>
+                  <td colSpan={headerGroup[0].headers.length}>
+                    <Empty />
                   </td>
                 </tr>
               )}
@@ -104,6 +85,6 @@ export default function Table<T>({
           </motion.div>
         )}
       </AnimatePresence>
-    </TableWrapper>
+    </div>
   )
 }

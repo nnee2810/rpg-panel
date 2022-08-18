@@ -1,4 +1,4 @@
-import { Spin, Tabs } from "components/basic"
+import { Empty, Spin, Tabs } from "components/basic"
 import { PageTitle } from "components/core"
 import {
   AiOutlineClockCircle,
@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai"
 import { BsCurrencyDollar } from "react-icons/bs"
 import { useParams } from "react-router-dom"
-import { ProfileOverview } from "../components"
+import { ProfileOverview, ProfileProperties } from "../components"
 import { useGetUserProfile } from "../hooks"
 
 export default function UserProfile() {
@@ -26,19 +26,21 @@ export default function UserProfile() {
       ) : data ? (
         <div className="grid grid-cols-2 items-start gap-4">
           <ProfileOverview data={data} />
-          <Tabs
-            tabs={[
-              { label: "Tài sản", icon: <BsCurrencyDollar /> },
-              { label: "Trang phục", icon: <AiOutlineSkin /> },
-              { label: "Kĩ năng công việc", icon: <AiOutlineUserSwitch /> },
-              { label: "Nhật ký faction", icon: <AiOutlineClockCircle /> },
-            ]}
-          >
-            <div></div>
-          </Tabs>
+          <div>
+            <Tabs
+              tabs={[
+                { label: "Tài sản", icon: <BsCurrencyDollar /> },
+                { label: "Trang phục", icon: <AiOutlineSkin /> },
+                { label: "Kĩ năng công việc", icon: <AiOutlineUserSwitch /> },
+                { label: "Nhật ký faction", icon: <AiOutlineClockCircle /> },
+              ]}
+            >
+              <ProfileProperties />
+            </Tabs>
+          </div>
         </div>
       ) : (
-        <div className="text-center">Không có dữ liệu</div>
+        <Empty />
       )}
     </div>
   )

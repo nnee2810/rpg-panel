@@ -1,2 +1,5 @@
+export * from "./bizz.interface"
+export * from "./house.interface"
 export * from "./profile.interface"
 export * from "./user.interface"
+export * from "./vehicle.interface"

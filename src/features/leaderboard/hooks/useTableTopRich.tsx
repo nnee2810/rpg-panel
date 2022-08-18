@@ -6,11 +6,11 @@ import {
 } from "@tanstack/react-table"
 import { Ping } from "components/basic"
 import { API } from "configs/api"
-import currency from "currency.js"
 import { IUser } from "features/users/interfaces"
 
 import { useMemo } from "react"
 import { Link } from "react-router-dom"
+import { formatCurrency } from "utils/format"
 
 interface IUserWithTotalMoney extends IUser {
   totalMoney: string
@@ -59,8 +59,7 @@ export default function useTableTopRich() {
       },
       {
         header: "Tổng tài sản",
-        accessorFn: ({ totalMoney }) =>
-          currency(totalMoney, { precision: 0 }).format({ separator: "." }),
+        accessorFn: ({ totalMoney }) => formatCurrency(totalMoney),
       },
       {
         header: "Đăng nhập lần cuối",
