@@ -11,15 +11,15 @@ import { useMemo } from "react"
 import { Link } from "react-router-dom"
 import { formatConnectedTime } from "utils/format"
 
-export default function useTableTopConnectedTime() {
-  const {
-    data = [],
-    isLoading,
-    isFetching,
-  } = useQuery(
+function useGetTopConnectedTime() {
+  return useQuery(
     ["get-statistic-top-connected-time"],
     async () => (await API.get<IUser[]>("/statistic/top-connected-time")).data
   )
+}
+
+export default function useTableTopConnectedTime() {
+  const { data = [], isLoading, isFetching } = useGetTopConnectedTime()
 
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [

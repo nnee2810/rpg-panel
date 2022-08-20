@@ -1,3 +1,5 @@
+import { IUser } from "features/users/interfaces"
+
 export interface IFactionLog {
   id: number
   player: number
@@ -40,4 +42,5 @@ export interface IFaction {
   Rank5?: number
   Rank6?: number
   Members: number
+  Leader?: IUser
 }

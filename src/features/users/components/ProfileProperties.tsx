@@ -1,10 +1,12 @@
 import { AlertMessage, BasicTable, Empty, Spin, Table } from "components/basic"
-import { useParams } from "react-router-dom"
 import { formatCurrency } from "utils/format"
 import { useGetUserProperties, useTableVehicles } from "../hooks"
 
-export default function ProfileProperties() {
-  const { name = "" } = useParams()
+interface ProfilePropertiesProps {
+  name: string
+}
+
+export default function ProfileProperties({ name }: ProfilePropertiesProps) {
   const { data, isLoading } = useGetUserProperties(name)
   const { getHeaderGroups, getRowModel } = useTableVehicles(data?.vehicles)
 

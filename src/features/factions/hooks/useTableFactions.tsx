@@ -1,15 +1,32 @@
+import { useQuery } from "@tanstack/react-query"
 import {
   ColumnDef,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { useAppSelector } from "hooks"
+import { PaginationResponse } from "interfaces"
+import qs from "qs"
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { userSelector } from "store/reducers/user"
-import { useGetFactions } from "."
 import { IFaction } from "../interfaces"
+
+function useGetFactions(query: PaginationDto) {
+  const queryString = qs.stringify(query, {
+    skipNulls: true,
+  })
+
+  return useQuery(
+    ["get-factions", queryString],
+    async () =>
+      (await API.get<PaginationResponse<IFaction>>(`/factions?${queryString}`))
+        .data,
+    { keepPreviousData: true }
+  )
+}
 
 export default function useTableFactions() {
   const { profile } = useAppSelector(userSelector)

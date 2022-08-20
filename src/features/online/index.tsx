@@ -1,10 +1,10 @@
-import { PageTitle } from "components/core"
+import { PageHeader } from "components/core"
 import { TableOnline } from "./components"
 
 export default function Online() {
   return (
     <div>
-      <PageTitle>Đang chơi</PageTitle>
+      <PageHeader>Đang chơi</PageHeader>
       <TableOnline />
     </div>
   )

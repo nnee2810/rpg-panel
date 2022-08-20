@@ -5,7 +5,6 @@ import { ReactNode } from "react"
 import {
   AiOutlineApartment,
   AiOutlineAudit,
-  AiOutlineHome,
   AiOutlineShop,
   AiOutlineTrophy,
   AiOutlineUserDelete,
@@ -53,7 +52,6 @@ export default function Sidebar() {
           </Section>
         )}
         <Section name="Điều hướng chính">
-          <SectionItem path="/" name="Trang chính" icon={<AiOutlineHome />} />
           <SectionItem
             path="/leaderboard"
             name="Bảng xếp hạng"
@@ -140,10 +138,13 @@ function SectionItem({ icon, name, path }: SectionItemProps) {
       <div
         className={clsx(
           "relative h-12 px-4 flex items-center text-md hover:bg-gray-700 transition",
-          { "bg-gradient-to-l from-emerald-500": path === location.pathname }
+          {
+            "bg-gradient-to-l from-emerald-500":
+              location.pathname.includes(path),
+          }
         )}
       >
-        {path === location.pathname && (
+        {location.pathname.includes(path) && (
           <motion.div
             layoutId="sidebar"
             className="absolute left-0 w-1 h-full bg-emerald-500"

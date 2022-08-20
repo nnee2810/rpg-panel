@@ -1,7 +1,7 @@
 import { Empty, Spin, Tabs } from "components/basic"
-import { PageTitle } from "components/core"
+import { PageHeader } from "components/core"
 import {
-  AiOutlineClockCircle,
+  AiOutlineHistory,
   AiOutlineSkin,
   AiOutlineUserSwitch,
 } from "react-icons/ai"
@@ -16,26 +16,26 @@ export default function UserProfile() {
 
   return (
     <div>
-      <PageTitle>
+      <PageHeader>
         Hồ sơ của <span className="text-emerald-500">{name}</span>
-      </PageTitle>
+      </PageHeader>
       {isLoading ? (
         <div className="flex justify-center">
           <Spin className="text-4xl" />
         </div>
       ) : data ? (
-        <div className="grid grid-cols-2 items-start gap-4">
+        <div className="grid grid-cols-3 items-start gap-4">
           <ProfileOverview data={data} />
-          <div>
+          <div className="col-span-2">
             <Tabs
               tabs={[
                 { label: "Tài sản", icon: <BsCurrencyDollar /> },
                 { label: "Trang phục", icon: <AiOutlineSkin /> },
                 { label: "Kĩ năng công việc", icon: <AiOutlineUserSwitch /> },
-                { label: "Nhật ký faction", icon: <AiOutlineClockCircle /> },
+                { label: "Nhật ký", icon: <AiOutlineHistory /> },
               ]}
             >
-              <ProfileProperties />
+              <ProfileProperties name="name" />
             </Tabs>
           </div>
         </div>

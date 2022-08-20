@@ -1,11 +1,11 @@
 import { Tabs } from "components/basic"
-import { PageTitle } from "components/core"
+import { PageHeader } from "components/core"
 import { TableAdmin, TableHelper, TableLeader } from "./components"
 
 export default function Staff() {
   return (
     <div>
-      <PageTitle>Quản trị viên</PageTitle>
+      <PageHeader>Quản trị viên</PageHeader>
       <Tabs
         tabs={[{ label: "Admin" }, { label: "Helper" }, { label: "Leader" }]}
       >

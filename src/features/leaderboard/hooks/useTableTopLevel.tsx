@@ -10,15 +10,15 @@ import { IUser } from "features/users/interfaces"
 import { useMemo } from "react"
 import { Link } from "react-router-dom"
 
-export default function useTableTopLevel() {
-  const {
-    data = [],
-    isLoading,
-    isFetching,
-  } = useQuery(
+function useGetTopLevel() {
+  return useQuery(
     ["get-statistic-top-level"],
     async () => (await API.get<IUser[]>("/statistic/top-level")).data
   )
+}
+
+export default function useTableTopLevel() {
+  const { data = [], isLoading, isFetching } = useGetTopLevel()
 
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [

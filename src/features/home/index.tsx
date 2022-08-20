@@ -1,5 +1,5 @@
 import { Empty, Spin } from "components/basic"
-import { PageTitle } from "components/core"
+import { PageHeader } from "components/core"
 import {
   AiOutlineHome,
   AiOutlineUsergroupAdd,
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div>
-      <PageTitle>Trang chính</PageTitle>
+      <PageHeader>Trang chính</PageHeader>
       {isLoading ? (
         <div className="flex justify-center">
           <Spin className="text-4xl" />

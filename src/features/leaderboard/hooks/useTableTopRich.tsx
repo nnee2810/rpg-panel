@@ -16,16 +16,16 @@ interface IUserWithTotalMoney extends IUser {
   totalMoney: string
 }
 
-export default function useTableTopRich() {
-  const {
-    data = [],
-    isLoading,
-    isFetching,
-  } = useQuery(
+function useGetTopRich() {
+  return useQuery(
     ["get-statistic-top-rich"],
     async () =>
       (await API.get<IUserWithTotalMoney[]>("/statistic/top-rich")).data
   )
+}
+
+export default function useTableTopRich() {
+  const { data = [], isLoading, isFetching } = useGetTopRich()
 
   const columns = useMemo<ColumnDef<IUserWithTotalMoney>[]>(
     () => [

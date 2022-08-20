@@ -9,6 +9,9 @@ const Leaderboard = lazy(() => import("features/leaderboard"))
 const Online = lazy(() => import("features/online"))
 const Staff = lazy(() => import("features/staff"))
 const Factions = lazy(() => import("features/factions/pages/Factions"))
+const FactionDetail = lazy(
+  () => import("features/factions/pages/FactionDetail")
+)
 const Clans = lazy(() => import("features/clans/pages/Clans"))
 const UserProfile = lazy(() => import("features/users/pages/UserProfile"))
 
@@ -45,7 +48,16 @@ const routes: RouteObject[] = [
       },
       {
         path: "factions",
-        element: <Factions />,
+        children: [
+          {
+            path: "",
+            element: <Factions />,
+          },
+          {
+            path: ":id",
+            element: <FactionDetail />,
+          },
+        ],
       },
       {
         path: "clans",

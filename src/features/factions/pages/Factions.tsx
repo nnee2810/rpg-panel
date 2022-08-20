@@ -1,10 +1,10 @@
-import { PageTitle } from "components/core"
+import { PageHeader } from "components/core"
 import { TableFactions } from "../components"
 
 export default function Factions() {
   return (
     <div>
-      <PageTitle>Faction</PageTitle>
+      <PageHeader>Faction</PageHeader>
       <TableFactions />
     </div>
   )

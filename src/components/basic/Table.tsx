@@ -1,5 +1,4 @@
 import { flexRender, HeaderGroup, RowModel } from "@tanstack/react-table"
-import clsx from "clsx"
 import { AnimatePresence, motion } from "framer-motion"
 import Empty from "./Empty"
 import Spin from "./Spin"
@@ -17,17 +16,12 @@ export default function Table<T>({
 }: TableProps<T>) {
   return (
     <div className="relative">
-      <table className="w-full bg-gray-800 rounded-md overflow-hidden">
+      <table className="w-full bg-gray-800 rounded-md">
         <thead>
           {headerGroup.map((headerGroup) => (
             <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header, idx) => (
-                <th
-                  className={clsx("p-4 border-gray-700/50", {
-                    "border-l": idx,
-                  })}
-                  key={header.id}
-                >
+              {headerGroup.headers.map((header) => (
+                <th className="p-4 border-b border-gray-700/50" key={header.id}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -43,11 +37,9 @@ export default function Table<T>({
           {rowModel.rows.length
             ? rowModel.rows.map((row) => (
                 <tr key={row.id}>
-                  {row.getVisibleCells().map((cell, idx) => (
+                  {row.getVisibleCells().map((cell) => (
                     <td
-                      className={clsx("p-4 border-t border-gray-700/50", {
-                        "border-l": idx,
-                      })}
+                      className="p-4 border-t border-gray-700/50"
                       key={cell.id}
                     >
                       <div className="flex justify-center items-center">

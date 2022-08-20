@@ -1,5 +1,5 @@
 import { Tabs } from "components/basic"
-import { PageTitle } from "components/core"
+import { PageHeader } from "components/core"
 import {
   TableTopConnectedTime,
   TableTopLevel,
@@ -9,7 +9,7 @@ import {
 export default function Leaderboard() {
   return (
     <div>
-      <PageTitle>Bảng xếp hạng</PageTitle>
+      <PageHeader>Bảng xếp hạng</PageHeader>
       <Tabs
         tabs={[
           { label: "Top level" },
