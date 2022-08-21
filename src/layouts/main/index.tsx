@@ -1,4 +1,4 @@
-import { LoadingPage } from "components/core"
+import { PageLoading } from "components/core"
 import { getProfile } from "features/auth/services"
 import { useAppDispatch, useAppSelector, useBoolean } from "hooks"
 import { useEffect } from "react"
@@ -40,6 +40,6 @@ export default function MainLayout() {
       </SimpleBar>
     </div>
   ) : (
-    <LoadingPage />
+    <PageLoading />
   )
 }

@@ -1,13 +1,29 @@
+import { useQuery } from "@tanstack/react-query"
 import {
   ColumnDef,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import { API } from "configs/api"
 import { PaginationDto } from "dto"
+import { PaginationResponse } from "interfaces"
+import qs from "qs"
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { useGetClans } from "."
 import { IClan } from "../interfaces"
+
+function useGetClans(query: PaginationDto) {
+  const queryString = qs.stringify(query, {
+    skipNulls: true,
+  })
+
+  return useQuery(
+    ["get-clans", queryString],
+    async () =>
+      (await API.get<PaginationResponse<IClan>>(`/clans?${queryString}`)).data,
+    { keepPreviousData: true }
+  )
+}
 
 export default function useTableClans() {
   const [query, setQuery] = useState<PaginationDto>({})

@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { AxiosError } from "axios"
-import { LoadingPage } from "components/core"
+import { PageLoading } from "components/core"
 import AppRoutes from "components/core/AppRoutes"
 import { Message } from "configs/constants"
 import "moment/locale/vi"
@@ -37,7 +37,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Suspense fallback={<LoadingPage />}>
+        <Suspense fallback={<PageLoading />}>
           <AppRoutes />
         </Suspense>
       </BrowserRouter>

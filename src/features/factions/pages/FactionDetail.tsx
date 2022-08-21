@@ -14,39 +14,38 @@ export default function FactionDetail() {
   const { id = "" } = useParams()
   const { data, isLoading } = useGetFactionOverview(id)
 
-  return (
+  if (isLoading)
+    return (
+      <div className="flex justify-center">
+        <Spin className="text-4xl" />
+      </div>
+    )
+
+  return data ? (
     <div>
       <PageHeader>
         Faction <span className="text-emerald-500">{data?.Name}</span>
       </PageHeader>
-      {isLoading ? (
-        <div className="flex justify-center">
-          <Spin className="text-4xl" />
+      <div className="grid grid-cols-3 gap-4">
+        <FactionOverview data={data} />
+        <div className="col-span-2">
+          <Tabs
+            tabs={[
+              {
+                label: "Thành viên",
+                icon: <AiOutlineUser />,
+              },
+              { label: "Tuyển dụng", icon: <AiOutlineUsergroupAdd /> },
+              { label: "Khiếu nại", icon: <AiOutlineAudit /> },
+              { label: "Nhật ký", icon: <AiOutlineHistory /> },
+            ]}
+          >
+            <TableFactionMembers id={id} />
+          </Tabs>
         </div>
-      ) : data ? (
-        <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-1">
-            <FactionOverview data={data} />
-          </div>
-          <div className="col-span-2">
-            <Tabs
-              tabs={[
-                {
-                  label: "Thành viên",
-                  icon: <AiOutlineUser />,
-                },
-                { label: "Tuyển dụng", icon: <AiOutlineUsergroupAdd /> },
-                { label: "Khiếu nại", icon: <AiOutlineAudit /> },
-                { label: "Nhật ký", icon: <AiOutlineHistory /> },
-              ]}
-            >
-              <TableFactionMembers id={id} />
-            </Tabs>
-          </div>
-        </div>
-      ) : (
-        <Empty />
-      )}
+      </div>
     </div>
+  ) : (
+    <Empty />
   )
 }

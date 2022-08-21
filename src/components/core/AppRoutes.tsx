@@ -13,6 +13,7 @@ const FactionDetail = lazy(
   () => import("features/factions/pages/FactionDetail")
 )
 const Clans = lazy(() => import("features/clans/pages/Clans"))
+const ClanDetail = lazy(() => import("features/clans/pages/ClanDetail"))
 const UserProfile = lazy(() => import("features/users/pages/UserProfile"))
 
 const routes: RouteObject[] = [
@@ -61,7 +62,16 @@ const routes: RouteObject[] = [
       },
       {
         path: "clans",
-        element: <Clans />,
+        children: [
+          {
+            path: "",
+            element: <Clans />,
+          },
+          {
+            path: ":id",
+            element: <ClanDetail />,
+          },
+        ],
       },
       {
         path: "users",

@@ -11,7 +11,7 @@ export default function FactionOverview({ data }: FactionOverviewProps) {
     <BasicTable>
       <tbody>
         <tr>
-          <td>Tên</td>
+          <td>Faction</td>
           <td>{data.Name}</td>
         </tr>
         <tr>

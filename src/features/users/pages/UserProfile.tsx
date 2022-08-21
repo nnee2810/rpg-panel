@@ -1,5 +1,5 @@
-import { Empty, Spin, Tabs } from "components/basic"
-import { PageHeader } from "components/core"
+import { Empty, Tabs } from "components/basic"
+import { Loading, PageHeader } from "components/core"
 import {
   AiOutlineHistory,
   AiOutlineSkin,
@@ -14,34 +14,30 @@ export default function UserProfile() {
   const { name = "" } = useParams()
   const { data, isLoading } = useGetUserProfile(name)
 
-  return (
+  if (isLoading) return <Loading />
+
+  return data ? (
     <div>
       <PageHeader>
         Hồ sơ của <span className="text-emerald-500">{name}</span>
       </PageHeader>
-      {isLoading ? (
-        <div className="flex justify-center">
-          <Spin className="text-4xl" />
+      <div className="grid grid-cols-3 items-start gap-4">
+        <ProfileOverview data={data} />
+        <div className="col-span-2">
+          <Tabs
+            tabs={[
+              { label: "Tài sản", icon: <BsCurrencyDollar /> },
+              { label: "Trang phục", icon: <AiOutlineSkin /> },
+              { label: "Kĩ năng công việc", icon: <AiOutlineUserSwitch /> },
+              { label: "Nhật ký", icon: <AiOutlineHistory /> },
+            ]}
+          >
+            <ProfileProperties name="name" />
+          </Tabs>
         </div>
-      ) : data ? (
-        <div className="grid grid-cols-3 items-start gap-4">
-          <ProfileOverview data={data} />
-          <div className="col-span-2">
-            <Tabs
-              tabs={[
-                { label: "Tài sản", icon: <BsCurrencyDollar /> },
-                { label: "Trang phục", icon: <AiOutlineSkin /> },
-                { label: "Kĩ năng công việc", icon: <AiOutlineUserSwitch /> },
-                { label: "Nhật ký", icon: <AiOutlineHistory /> },
-              ]}
-            >
-              <ProfileProperties name="name" />
-            </Tabs>
-          </div>
-        </div>
-      ) : (
-        <Empty />
-      )}
+      </div>
     </div>
+  ) : (
+    <Empty />
   )
 }

@@ -11,7 +11,7 @@ export default function Spin({
     <CgSpinner
       {...props}
       fontSize={fontSize}
-      className={clsx("mr-2 animate-spin", className)}
+      className={clsx("animate-spin", className)}
     />
   )
 }

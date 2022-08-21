@@ -2,6 +2,7 @@ import clsx from "clsx"
 import { Menu, Ping, Tag } from "components/basic"
 import { IProfile } from "features/users/interfaces"
 import { useAppDispatch, useAppSelector } from "hooks"
+import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { Link } from "react-router-dom"
 import { signOut, userSelector } from "store/reducers/user"
@@ -45,8 +46,14 @@ export default function Header() {
             />
           }
         >
-          <Link to={`/users/profile/${profile?.name}`}>Hồ sơ</Link>
-          <div onClick={() => dispatch(signOut())}>Đăng xuất</div>
+          <Link to={`/users/profile/${profile?.name}`}>
+            <AiOutlineUser className="text-xl" />
+            <div>Hồ sơ</div>
+          </Link>
+          <div onClick={() => dispatch(signOut())}>
+            <AiOutlineLogout className="text-xl" />
+            <div>Đăng xuất</div>
+          </div>
         </Menu>
       </div>
     </div>
