@@ -28,7 +28,7 @@ export default function useTableAdmin() {
         }) => (
           <div className="flex items-center space-x-2">
             <Ping online={!!Status} />
-            <Link to={`/users/profile/${name}`} className="text-emerald-500">
+            <Link to={`/users/${name}`} className="text-emerald-500">
               {name}
             </Link>
           </div>

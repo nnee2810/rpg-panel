@@ -75,7 +75,7 @@ const routes: RouteObject[] = [
       },
       {
         path: "users",
-        children: [{ path: "profile/:name", element: <UserProfile /> }],
+        children: [{ path: ":name", element: <UserProfile /> }],
       },
     ],
   },

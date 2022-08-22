@@ -12,10 +12,7 @@ export default function useGetUserProperties(name: string) {
   return useQuery(
     ["get-user-properties", name],
     async () =>
-      (
-        await API.get<GetUserPropertiesResponse>(
-          `/users/profile/${name}/properties`
-        )
-      ).data
+      (await API.get<GetUserPropertiesResponse>(`/users/${name}/properties`))
+        .data
   )
 }

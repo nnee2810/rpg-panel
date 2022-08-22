@@ -32,7 +32,7 @@ export default function UserProfile() {
               { label: "Nhật ký", icon: <AiOutlineHistory /> },
             ]}
           >
-            <ProfileProperties name="name" />
+            <ProfileProperties name={name} />
           </Tabs>
         </div>
       </div>

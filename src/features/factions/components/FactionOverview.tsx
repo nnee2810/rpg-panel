@@ -21,7 +21,7 @@ export default function FactionOverview({ data }: FactionOverviewProps) {
               <div className="flex items-center space-x-2">
                 <Ping online={!!data?.Leader.Status} />
                 <Link
-                  to={`/users/profile/${data?.Leader.name}`}
+                  to={`/users/${data?.Leader.name}`}
                   className="text-emerald-500"
                 >
                   {data?.Leader.name}

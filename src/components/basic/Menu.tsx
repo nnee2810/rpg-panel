@@ -42,7 +42,7 @@ export default function Menu({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <M.Items className="absolute right-0 mt-2 w-56  bg-gray-700 rounded-md focus:outline-none">
+        <M.Items className="absolute right-0 mt-2 w-56 bg-gray-700 rounded-md focus:outline-none">
           <div className="py-1">
             {Children.toArray(children).map((item, idx) => (
               <M.Item key={idx}>
@@ -51,7 +51,7 @@ export default function Menu({
                     cloneElement(item, {
                       ...item.props,
                       className: clsx(
-                        "px-4 py-2 flex items-center space-x-2 transition cursor-pointer",
+                        "px-4 py-2 flex items-center space-x-2 transition cursor-pointer z-20",
                         {
                           "bg-emerald-500": active,
                           "border-t border-gray-600": idx,

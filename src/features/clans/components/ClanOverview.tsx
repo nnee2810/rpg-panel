@@ -21,10 +21,7 @@ export default function ClanOverview({ data }: ClanOverviewProps) {
         <tr>
           <td>Chủ clan</td>
           <td>
-            <Link
-              to={`/users/profile/${data.Owner}`}
-              className="text-emerald-500"
-            >
+            <Link to={`/users/${data.Owner}`} className="text-emerald-500">
               {data.Owner}
             </Link>
           </td>

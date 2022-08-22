@@ -135,38 +135,32 @@ function SectionItem({ icon, name, path }: SectionItemProps) {
 
   return (
     <Link to={path}>
-      <div
-        className={clsx(
-          "relative h-12 px-4 flex items-center text-md hover:bg-gray-700 transition",
-          {
-            "bg-gradient-to-l from-emerald-500":
-              location.pathname.includes(path),
-          }
-        )}
-      >
+      <div className="relative h-12 hover:bg-gray-700 transition">
         {location.pathname.includes(path) && (
           <motion.div
             layoutId="sidebar"
-            className="absolute left-0 w-1 h-full bg-emerald-500"
+            className="absolute left-0 w-full h-full bg-emerald-500 z-0"
           />
         )}
-        <div className="text-xl">{icon}</div>
-        <AnimatePresence exitBeforeEnter>
-          {!collapsed && (
-            <motion.div
-              initial="hide"
-              animate="show"
-              exit="hide"
-              variants={{
-                show: { opacity: 1 },
-                hide: { opacity: 0 },
-              }}
-              className="ml-2 truncate"
-            >
-              {name}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="absolute w-full h-full px-4 flex items-center">
+          <div className="text-xl">{icon}</div>
+          <AnimatePresence exitBeforeEnter>
+            {!collapsed && (
+              <motion.div
+                initial="hide"
+                animate="show"
+                exit="hide"
+                variants={{
+                  show: { opacity: 1 },
+                  hide: { opacity: 0 },
+                }}
+                className="ml-2 truncate"
+              >
+                {name}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </Link>
   )

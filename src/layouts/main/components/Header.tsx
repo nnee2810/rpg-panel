@@ -46,7 +46,7 @@ export default function Header() {
             />
           }
         >
-          <Link to={`/users/profile/${profile?.name}`}>
+          <Link to={`/users/${profile?.name}`}>
             <AiOutlineUser className="text-xl" />
             <div>Hồ sơ</div>
           </Link>
