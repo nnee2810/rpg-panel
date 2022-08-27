@@ -15,7 +15,7 @@ export default function Home() {
   if (isLoading) return <Loading />
 
   return data ? (
-    <div>
+    <div className="space-y-4">
       <PageHeader>Trang chính</PageHeader>
       <div className="grid grid-cols-4 gap-4">
         <Card

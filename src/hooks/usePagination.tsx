@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { range } from "utils/range"
+import { generateNumberRange } from "utils/generateNumberRange"
 
 export interface UsePaginationProps {
   currentPage: number
@@ -22,7 +22,7 @@ export default function usePagination({
       paginationComponent, we return the range [1..totaltotalPage]
     */
     if (totalPageNumbers >= totalPage) {
-      return range(1, totalPage)
+      return generateNumberRange(1, totalPage)
     }
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1)
@@ -39,7 +39,7 @@ export default function usePagination({
     */
     if (!shouldShowLeftDots && shouldShowRightDots) {
       let leftItemCount = 3 + 2 * siblingCount
-      let leftRange = range(1, leftItemCount)
+      let leftRange = generateNumberRange(1, leftItemCount)
 
       return [...leftRange, "...", totalPage]
     }
@@ -49,7 +49,10 @@ export default function usePagination({
     */
     if (shouldShowLeftDots && !shouldShowRightDots) {
       let rightItemCount = 3 + 2 * siblingCount
-      let rightRange = range(totalPage - rightItemCount + 1, totalPage)
+      let rightRange = generateNumberRange(
+        totalPage - rightItemCount + 1,
+        totalPage
+      )
       return [firstPageIndex, "...", ...rightRange]
     }
 
@@ -57,7 +60,7 @@ export default function usePagination({
     	Case 4: Both left and right dots to be shown
     */
     if (shouldShowLeftDots && shouldShowRightDots) {
-      let middleRange = range(leftSiblingIndex, rightSiblingIndex)
+      let middleRange = generateNumberRange(leftSiblingIndex, rightSiblingIndex)
       return [firstPageIndex, "...", ...middleRange, "...", lastPageIndex]
     }
   }, [currentPage, totalPage, siblingCount])

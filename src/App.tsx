@@ -1,11 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { AxiosError } from "axios"
 import { PageLoading } from "components/core"
 import AppRoutes from "components/core/AppRoutes"
-import { Message } from "configs/constants"
+import { handleAxiosError } from "helpers"
 import "moment/locale/vi"
 import { Suspense } from "react"
-import toast, { Toaster } from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
 import { BrowserRouter } from "react-router-dom"
 
 const queryClient = new QueryClient({
@@ -13,22 +12,10 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       retry: 1,
-      onError(error) {
-        if (error instanceof AxiosError) {
-          toast.error(
-            error.response?.data?.message || Message.INTERNAL_SERVER_ERROR
-          )
-        } else toast.error(Message.INTERNAL_SERVER_ERROR)
-      },
+      onError: handleAxiosError,
     },
     mutations: {
-      onError(error) {
-        if (error instanceof AxiosError) {
-          toast.error(
-            error.response?.data?.message || Message.INTERNAL_SERVER_ERROR
-          )
-        } else toast.error(Message.INTERNAL_SERVER_ERROR)
-      },
+      onError: handleAxiosError,
     },
   },
 })

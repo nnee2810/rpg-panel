@@ -1,5 +1,5 @@
 import { BasicTable } from "components/basic"
-import { Link } from "react-router-dom"
+import { UserLink } from "components/core"
 import { IClan } from "../interfaces"
 
 interface ClanOverviewProps {
@@ -21,9 +21,7 @@ export default function ClanOverview({ data }: ClanOverviewProps) {
         <tr>
           <td>Chủ clan</td>
           <td>
-            <Link to={`/users/${data.Owner}`} className="text-emerald-500">
-              {data.Owner}
-            </Link>
+            <UserLink name={data.Owner} />
           </td>
         </tr>
         <tr>

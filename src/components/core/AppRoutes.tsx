@@ -5,6 +5,7 @@ import { Navigate, RouteObject, useRoutes } from "react-router-dom"
 
 const SignIn = lazy(() => import("features/auth/pages/SignIn"))
 const Home = lazy(() => import("features/home"))
+const UserProfile = lazy(() => import("features/users/pages/UserProfile"))
 const Leaderboard = lazy(() => import("features/leaderboard"))
 const Online = lazy(() => import("features/online"))
 const Staff = lazy(() => import("features/staff"))
@@ -14,7 +15,7 @@ const FactionDetail = lazy(
 )
 const Clans = lazy(() => import("features/clans/pages/Clans"))
 const ClanDetail = lazy(() => import("features/clans/pages/ClanDetail"))
-const UserProfile = lazy(() => import("features/users/pages/UserProfile"))
+const Tickets = lazy(() => import("features/tickets/pages/Tickets"))
 
 const routes: RouteObject[] = [
   {
@@ -28,12 +29,16 @@ const routes: RouteObject[] = [
     ],
   },
   {
-    path: "/",
+    path: "",
     element: <MainLayout />,
     children: [
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "users",
+        children: [{ path: ":name", element: <UserProfile /> }],
       },
       {
         path: "leaderboard",
@@ -74,8 +79,13 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        path: "users",
-        children: [{ path: ":name", element: <UserProfile /> }],
+        path: "tickets",
+        children: [
+          {
+            path: "",
+            element: <Tickets />,
+          },
+        ],
       },
     ],
   },

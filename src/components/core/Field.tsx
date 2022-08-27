@@ -44,7 +44,7 @@ export default function Field({ name, children, label, tip }: FieldProps) {
       />
       <Collapse open={!!errors?.[name]}>
         {errors?.[name] && (
-          <div className="mt-1 text-red-500">
+          <div className="text-sm text-red-500">
             {String(errors?.[name]?.message)}
           </div>
         )}

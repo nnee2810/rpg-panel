@@ -3,7 +3,7 @@ import { TableFactions } from "../components"
 
 export default function Factions() {
   return (
-    <div>
+    <div className="space-y-4">
       <PageHeader>Faction</PageHeader>
       <TableFactions />
     </div>

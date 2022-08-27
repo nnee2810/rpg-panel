@@ -24,7 +24,12 @@ export default function SignIn() {
           <Field name="password" label="Mật khẩu">
             <Input type="password" />
           </Field>
-          <Button scheme="primary" isLoading={isLoading} className="mt-6">
+          <Button
+            type="submit"
+            scheme="primary"
+            isLoading={isLoading}
+            className="mt-6"
+          >
             Đăng nhập
           </Button>
         </form>

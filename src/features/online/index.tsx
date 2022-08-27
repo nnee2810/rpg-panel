@@ -3,7 +3,7 @@ import { TableOnline } from "./components"
 
 export default function Online() {
   return (
-    <div>
+    <div className="space-y-4">
       <PageHeader>Đang chơi</PageHeader>
       <TableOnline />
     </div>

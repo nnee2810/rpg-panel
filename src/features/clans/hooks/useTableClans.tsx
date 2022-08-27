@@ -4,9 +4,10 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import { UserLink } from "components/core"
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
-import { PaginationResponse } from "interfaces"
+import { PaginationData } from "interfaces"
 import qs from "qs"
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
@@ -20,7 +21,7 @@ function useGetClans(query: PaginationDto) {
   return useQuery(
     ["get-clans", queryString],
     async () =>
-      (await API.get<PaginationResponse<IClan>>(`/clans?${queryString}`)).data,
+      (await API.get<PaginationData<IClan>>(`/clans?${queryString}`)).data,
     { keepPreviousData: true }
   )
 }
@@ -57,11 +58,7 @@ export default function useTableClans() {
           row: {
             original: { Owner },
           },
-        }) => (
-          <Link to={`/users/${Owner}`} className="text-emerald-500">
-            {Owner}
-          </Link>
-        ),
+        }) => <UserLink name={Owner} />,
       },
       {
         header: "Thành viên",

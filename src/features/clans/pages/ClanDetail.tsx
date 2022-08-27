@@ -13,7 +13,7 @@ export default function ClanDetail() {
   if (isLoading) return <Loading />
 
   return data ? (
-    <div>
+    <div className="space-y-4">
       <PageHeader>
         Clan <span style={{ color: `#${data.Color}` }}>{data.Name}</span>
       </PageHeader>

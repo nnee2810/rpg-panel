@@ -54,7 +54,6 @@ export default function Menu({
                         "px-4 py-2 flex items-center space-x-2 transition cursor-pointer z-20",
                         {
                           "bg-emerald-500": active,
-                          "border-t border-gray-600": idx,
                         }
                       ),
                     })

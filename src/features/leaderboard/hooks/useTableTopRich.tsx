@@ -4,12 +4,11 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { Ping } from "components/basic"
+import { UserLink } from "components/core"
 import { API } from "configs/api"
 import { IUser } from "features/users/interfaces"
 
 import { useMemo } from "react"
-import { Link } from "react-router-dom"
 import { formatCurrency } from "utils/format"
 
 interface IUserWithTotalMoney extends IUser {
@@ -48,14 +47,7 @@ export default function useTableTopRich() {
           row: {
             original: { name, Status },
           },
-        }) => (
-          <div className="flex items-center space-x-2">
-            <Ping online={!!Status} />
-            <Link to={`/users/${name}`} className="text-emerald-500">
-              {name}
-            </Link>
-          </div>
-        ),
+        }) => <UserLink name={name} online={!!Status} />,
       },
       {
         header: "Tổng tài sản",

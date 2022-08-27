@@ -22,7 +22,7 @@ export default function FactionDetail() {
     )
 
   return data ? (
-    <div>
+    <div className="space-y-4">
       <PageHeader>
         Faction <span className="text-emerald-500">{data?.Name}</span>
       </PageHeader>

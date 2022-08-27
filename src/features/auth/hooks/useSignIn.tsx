@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation } from "@tanstack/react-query"
 import { API } from "configs/api"
-import { requiredMessage } from "helpers/validateMessage"
+import { requiredMessage } from "helpers"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { setToken } from "utils/token"

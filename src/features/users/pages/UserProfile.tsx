@@ -17,7 +17,7 @@ export default function UserProfile() {
   if (isLoading) return <Loading />
 
   return data ? (
-    <div>
+    <div className="space-y-4">
       <PageHeader>
         Hồ sơ của <span className="text-emerald-500">{name}</span>
       </PageHeader>

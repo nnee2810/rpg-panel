@@ -85,7 +85,7 @@ export default function Sidebar() {
             icon={<AiOutlineAudit />}
           />
           <SectionItem
-            path="/supports"
+            path="/tickets"
             name="Hỗ trợ"
             icon={<IoTicketOutline />}
           />

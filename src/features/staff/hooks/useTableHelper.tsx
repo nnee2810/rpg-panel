@@ -3,12 +3,11 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { Ping } from "components/basic"
+import { UserLink } from "components/core"
 import { GetUsersDto } from "features/users/dto"
 import { useGetUsers } from "features/users/hooks"
 import { IUser } from "features/users/interfaces"
 import { useMemo, useState } from "react"
-import { Link } from "react-router-dom"
 
 export default function useTableHelper() {
   const [query, setQuery] = useState<GetUsersDto>({
@@ -24,14 +23,7 @@ export default function useTableHelper() {
           row: {
             original: { name, Status },
           },
-        }) => (
-          <div className="flex items-center space-x-2">
-            <Ping online={!!Status} />
-            <Link to={`/users/${name}`} className="text-emerald-500">
-              {name}
-            </Link>
-          </div>
-        ),
+        }) => <UserLink name={name} online={!!Status} />,
       },
       {
         header: "Helper",

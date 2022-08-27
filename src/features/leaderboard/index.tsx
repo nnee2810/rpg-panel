@@ -8,7 +8,7 @@ import {
 
 export default function Leaderboard() {
   return (
-    <div>
+    <div className="space-y-4">
       <PageHeader>Bảng xếp hạng</PageHeader>
       <Tabs
         tabs={[

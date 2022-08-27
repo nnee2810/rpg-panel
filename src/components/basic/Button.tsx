@@ -5,8 +5,8 @@ import { Spin } from "."
 
 const buttonScheme = {
   primary:
-    "bg-emerald-500 hover:bg-emerald-400 focus:bg-emerald-400 shadow-xl hover:shadow-emerald-400/50 focus:shadow-emerald-400/50",
-  gray: "bg-gray-600 hover:bg-gray-500 focus:bg-gray-500 shadow-xl hover:shadow-gray-500/50 focus:shadow-gray-500/50",
+    "bg-emerald-500 hover:bg-emerald-400 focus-visible:bg-emerald-400 shadow-xl hover:shadow-emerald-400/50 focus:shadow-emerald-400/50",
+  gray: "bg-gray-600 hover:bg-gray-500 focus-visible:bg-gray-500 shadow-xl hover:shadow-gray-500/50 focus:shadow-gray-500/50",
 }
 type ButtonScheme = keyof typeof buttonScheme
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -26,7 +26,7 @@ export default function Button({
       {...props}
       disabled={isLoading}
       className={clsx(
-        "w-full h-11 flex justify-center items-center px-4 rounded-md outline-0 transition duration-300",
+        "h-11 flex justify-center items-center px-4 rounded-md outline-0 transition duration-300",
         className,
         buttonScheme[scheme],
         { "cursor-not-allowed": isLoading }
@@ -44,7 +44,7 @@ export default function Button({
             }}
             transition={{ type: "tween", duration: 0.25 }}
           >
-            <Spin />
+            <Spin className="mr-2" />
           </motion.div>
         )}
       </AnimatePresence>

@@ -18,15 +18,17 @@ export default function Input({ isInvalid, type, ...props }: InputProps) {
         type={
           type === "password" ? (showPassword ? "text" : "password") : "text"
         }
-        className="w-full h-11 px-4 bg-gray-600 hover:bg-gray-500 focus:bg-gray-500 
-        rounded-md outline-0 shadow-xl hover:shadow-gray-500/50 focus:shadow-gray-500/50 transition duration-300"
+        className="w-full px-4 py-2.5 bg-gray-700 hover:bg-gray-600 focus:bg-gray-600 
+        rounded-md outline-0 shadow-xl hover:shadow-gray-600/50 focus:shadow-gray-600/50 transition duration-300"
       />
-      <div
-        className={clsx(
-          "absolute top-1.5 -left-0.5 w-1 h-9 rounded transition",
-          isInvalid ? "bg-red-500" : "bg-emerald-500"
-        )}
-      />
+      <div className="absolute inset-y-0 -left-0.5 flex items-center">
+        <div
+          className={clsx(
+            "w-1 h-7 rounded transition",
+            isInvalid ? "bg-red-500" : "bg-emerald-500"
+          )}
+        ></div>
+      </div>
       {type === "password" && (
         <div
           className="absolute right-3.5 bottom-3.5 text-xl cursor-pointer"

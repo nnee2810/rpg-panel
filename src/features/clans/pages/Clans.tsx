@@ -3,7 +3,7 @@ import { TableClans } from "../components"
 
 export default function Clans() {
   return (
-    <div>
+    <div className="space-y-4">
       <PageHeader>Clan</PageHeader>
       <TableClans />
     </div>

@@ -7,7 +7,7 @@ import {
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { useAppSelector } from "hooks"
-import { PaginationResponse } from "interfaces"
+import { PaginationData } from "interfaces"
 import qs from "qs"
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
@@ -22,7 +22,7 @@ function useGetFactions(query: PaginationDto) {
   return useQuery(
     ["get-factions", queryString],
     async () =>
-      (await API.get<PaginationResponse<IFaction>>(`/factions?${queryString}`))
+      (await API.get<PaginationData<IFaction>>(`/factions?${queryString}`))
         .data,
     { keepPreviousData: true }
   )

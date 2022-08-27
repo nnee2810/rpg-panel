@@ -1,7 +1,7 @@
+import { UserLink } from "components/core"
 import { IFactionLog } from "features/factions/interfaces"
 import moment from "moment"
 import { AiOutlineClockCircle } from "react-icons/ai"
-import { Link } from "react-router-dom"
 
 interface RecentActionsProps {
   data: IFactionLog[]
@@ -31,24 +31,20 @@ export default function RecentActions({ data }: RecentActionsProps) {
 }
 function renderText(text: string) {
   const words = text.split(" ")
-  const playerName = words.shift()
+  const playerName = words.shift()!
   const leaderNameIdx = words.findIndex((word) => word === "khoi") - 1
 
   const leaderName = words[leaderNameIdx]
 
   return (
     <>
-      <Link to={`/users/${playerName}`} className="text-emerald-500">
-        {playerName}
-      </Link>{" "}
+      <UserLink name={playerName} />{" "}
       {leaderNameIdx < 1 ? (
         words.join(" ")
       ) : (
         <>
           {words.slice(0, leaderNameIdx).join(" ")}{" "}
-          <Link to={`/users/${leaderName}`} className="text-emerald-500">
-            {leaderName}
-          </Link>{" "}
+          <UserLink name={leaderName} />
           {words.slice(leaderNameIdx + 2).join(" ")}
         </>
       )}
