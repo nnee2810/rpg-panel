@@ -24,10 +24,7 @@ function useGetFactionMembers({ id, ...query }: GetFactionMembersDto) {
         await API.get<PaginationData<IUser>>(
           `/factions/${id}/members?${queryString}`
         )
-      ).data,
-    {
-      keepPreviousData: true,
-    }
+      ).data
   )
 }
 

@@ -1,28 +1,9 @@
 import { Button, Input, Modal, Select, Textarea } from "components/basic"
 import { ModalProps } from "components/basic/Modal"
-import { SelectOption } from "components/basic/Select"
 import { Field } from "components/core"
 import { FormProvider } from "react-hook-form"
+import { ticketCategoryOptions } from "../constants"
 import { useCreateTicket } from "../hooks"
-
-const categoryOptions: SelectOption[] = [
-  {
-    label: "Chung",
-    value: "GENERAL",
-  },
-  {
-    label: "Tài khoản",
-    value: "ACCOUNT",
-  },
-  {
-    label: "Nạp tiền",
-    value: "DONATE",
-  },
-  {
-    label: "Lỗi game",
-    value: "BUG",
-  },
-]
 
 export default function ModalCreateTicket({
   title,
@@ -38,23 +19,33 @@ export default function ModalCreateTicket({
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Field name="category" label="Phân loại">
-              <Select options={categoryOptions} />
+            <Field
+              name="category"
+              label="Phân loại"
+              tip="Hãy chọn phân loại phù hợp nhất với vấn đề của bạn"
+            >
+              <Select options={ticketCategoryOptions.slice(1)} />
             </Field>
-            <Field name="title" label="Tiêu đề">
+            <Field
+              name="title"
+              label="Tiêu đề"
+              tip="Tiêu đề có độ dài tối đa 50 kí tự"
+            >
               <Input />
             </Field>
-            <Field name="description" label="Mô tả">
+            <Field
+              name="description"
+              label="Mô tả"
+              tip="Mô tả có độ dài tối đa 300 kí tự"
+            >
               <Textarea />
             </Field>
           </div>
-          <div className="flex space-x-2">
+          <div className="grid grid-cols-2 gap-2">
             <Button type="submit" scheme="primary" isLoading={isLoading}>
               Tạo
             </Button>
-            <Button type="button" onClick={onClose}>
-              Đóng
-            </Button>
+            <Button onClick={onClose}>Đóng</Button>
           </div>
         </form>
       </FormProvider>

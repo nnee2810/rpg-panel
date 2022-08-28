@@ -1,7 +1,7 @@
 import { cloneElement, ReactElement } from "react"
 import { Controller, useFormContext } from "react-hook-form"
 import { AiOutlineInfoCircle } from "react-icons/ai"
-import { Collapse } from "../basic"
+import { Collapse, Tooltip } from "../basic"
 
 interface FieldProps {
   name: string
@@ -18,14 +18,16 @@ export default function Field({ name, children, label, tip }: FieldProps) {
 
   return (
     <div className="mb-2">
-      <div>
+      <div className="flex space-x-1 mb-1">
         <label htmlFor={name} className="text-xs">
-          {label}{" "}
+          {label}
         </label>
         {tip && (
-          <span data-tip={tip}>
-            <AiOutlineInfoCircle className="inline" />
-          </span>
+          <Tooltip content={tip}>
+            <div>
+              <AiOutlineInfoCircle />
+            </div>
+          </Tooltip>
         )}
       </div>
       <Controller

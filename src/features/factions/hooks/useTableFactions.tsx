@@ -22,9 +22,7 @@ function useGetFactions(query: PaginationDto) {
   return useQuery(
     ["get-factions", queryString],
     async () =>
-      (await API.get<PaginationData<IFaction>>(`/factions?${queryString}`))
-        .data,
-    { keepPreviousData: true }
+      (await API.get<PaginationData<IFaction>>(`/factions?${queryString}`)).data
   )
 }
 

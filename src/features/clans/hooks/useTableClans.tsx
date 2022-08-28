@@ -21,8 +21,7 @@ function useGetClans(query: PaginationDto) {
   return useQuery(
     ["get-clans", queryString],
     async () =>
-      (await API.get<PaginationData<IClan>>(`/clans?${queryString}`)).data,
-    { keepPreviousData: true }
+      (await API.get<PaginationData<IClan>>(`/clans?${queryString}`)).data
   )
 }
 

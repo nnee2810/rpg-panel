@@ -25,10 +25,7 @@ function useGetClanMembers({ id, ...query }: GetClanMembersDto) {
         await API.get<PaginationData<IUser>>(
           `/clans/${id}/members?${queryString}`
         )
-      ).data,
-    {
-      keepPreviousData: true,
-    }
+      ).data
   )
 }
 

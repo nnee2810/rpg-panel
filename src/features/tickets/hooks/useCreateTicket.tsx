@@ -22,12 +22,12 @@ const schema = yup.object().shape({
     .string()
     .label("Tiêu đề")
     .required(requiredMessage)
-    .max(56, maxLengthMessage),
+    .max(50, maxLengthMessage),
   description: yup
     .string()
     .label("Mô tả")
     .required(requiredMessage)
-    .max(512, maxLengthMessage),
+    .max(300, maxLengthMessage),
 })
 
 export default function useCreateTicket({ onClose }: UseCreateTicketProps) {
@@ -47,6 +47,7 @@ export default function useCreateTicket({ onClose }: UseCreateTicketProps) {
     mutate(data, {
       onSuccess() {
         onClose()
+        methods.reset()
         toast.success("Phiếu hỗ trợ đã được gửi")
         queryClient.invalidateQueries(["get-tickets"])
       },

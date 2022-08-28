@@ -13,7 +13,6 @@ export default function useGetUsers(query: GetUsersDto) {
   return useQuery(
     ["get-users", queryString],
     async () =>
-      (await API.get<PaginationData<IUser>>(`/users?${queryString}`)).data,
-    { keepPreviousData: true }
+      (await API.get<PaginationData<IUser>>(`/users?${queryString}`)).data
   )
 }

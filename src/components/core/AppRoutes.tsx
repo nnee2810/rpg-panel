@@ -16,6 +16,7 @@ const FactionDetail = lazy(
 const Clans = lazy(() => import("features/clans/pages/Clans"))
 const ClanDetail = lazy(() => import("features/clans/pages/ClanDetail"))
 const Tickets = lazy(() => import("features/tickets/pages/Tickets"))
+const TicketDetail = lazy(() => import("features/tickets/pages/TicketDetail"))
 
 const routes: RouteObject[] = [
   {
@@ -84,6 +85,10 @@ const routes: RouteObject[] = [
           {
             path: "",
             element: <Tickets />,
+          },
+          {
+            path: ":id",
+            element: <TicketDetail />,
           },
         ],
       },

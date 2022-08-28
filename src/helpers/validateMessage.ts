@@ -3,7 +3,7 @@ import { MessageParams } from "yup/lib/types"
 enum ValidateMessage {
   REQUIRED = "không được để trống",
   INVALID = "không hợp lệ",
-  MAX_LENGTH = "có độ dài tối đa",
+  MAX_LENGTH = "có dộ dài tối đa",
   NOT_MATCH = "không khớp",
 }
 

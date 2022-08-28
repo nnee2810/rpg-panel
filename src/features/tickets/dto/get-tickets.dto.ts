@@ -3,7 +3,7 @@ import { TicketCategory, TicketStatus } from "../interfaces"
 
 export interface GetTicketsDto extends PaginationDto {
   userId?: number
-  category?: TicketCategory
-  status?: TicketStatus
+  category?: TicketCategory | null
+  status?: TicketStatus | null
   title?: string
 }

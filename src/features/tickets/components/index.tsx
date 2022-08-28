@@ -1,2 +1,2 @@
 export { default as ModalCreateTicket } from "./ModalCreateTicket"
-export { default as TicketList } from "./TicketList"
+export { default as SearchTickets } from "./SearchTickets"

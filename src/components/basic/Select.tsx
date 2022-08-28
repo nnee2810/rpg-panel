@@ -7,14 +7,14 @@ import Empty from "./Empty"
 
 export interface SelectOption {
   label: string
-  value: string
+  value: unknown
 }
 
 interface SelectProps {
   options: SelectOption[]
   value?: string
   isInvalid?: boolean
-  onChange?(value: string): void
+  onChange?(value: unknown): void
 }
 
 export default function Select({
@@ -49,10 +49,10 @@ export default function Select({
           </Listbox.Button>
           <Transition
             as={Fragment}
-            enter="transition ease-out duration-100"
+            enter="transition ease-out duration-150"
             enterFrom="transform opacity-0 scale-95"
             enterTo="transform opacity-100 scale-100"
-            leave="transition ease-in duration-75"
+            leave="transition ease-in duration-150"
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
@@ -62,8 +62,12 @@ export default function Select({
                   options.map((option) => (
                     <Listbox.Option
                       value={option.value}
-                      className="relative px-8 py-2 hover:bg-emerald-500"
-                      key={option.value}
+                      className={({ active }) =>
+                        clsx("relative px-8 py-2 hover:bg-emerald-500", {
+                          "bg-emerald-500": active,
+                        })
+                      }
+                      key={option.label}
                     >
                       {({ selected }) => (
                         <>

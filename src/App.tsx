@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom"
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      keepPreviousData: true,
       refetchOnWindowFocus: false,
       retry: 1,
       onError: handleAxiosError,

@@ -3,6 +3,7 @@ import clsx from "clsx"
 import {
   Children,
   cloneElement,
+  Fragment,
   isValidElement,
   PropsWithChildren,
   ReactNode,
@@ -35,14 +36,15 @@ export default function Menu({
       </M.Button>
 
       <Transition
-        enter="transition ease-out duration-100"
+        as={Fragment}
+        enter="transition ease-out duration-150"
         enterFrom="transform opacity-0 scale-95"
         enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
+        leave="transition ease-in duration-150"
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <M.Items className="absolute right-0 mt-2 w-56 bg-gray-700 rounded-md focus:outline-none">
+        <M.Items className="absolute right-0 mt-2 w-56 bg-gray-700 rounded-lg shadow-xl">
           <div className="py-1">
             {Children.toArray(children).map((item, idx) => (
               <M.Item key={idx}>

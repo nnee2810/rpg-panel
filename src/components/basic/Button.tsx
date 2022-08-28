@@ -23,6 +23,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
+      type="button"
       {...props}
       disabled={isLoading}
       className={clsx(

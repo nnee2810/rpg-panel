@@ -11,7 +11,7 @@ export default function useGetTickets(query: GetTicketsDto) {
   })
 
   return useQuery(
-    ["get-tickets", query],
+    ["get-tickets", queryString],
     async () =>
       (await API.get<PaginationData<ITicket>>(`/tickets?${queryString}`)).data
   )

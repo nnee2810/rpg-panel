@@ -4,7 +4,6 @@ import { InputHTMLAttributes } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  onChange?: (...event: any[]) => void
   isInvalid?: boolean
 }
 
