@@ -78,7 +78,7 @@ export default function Select({
                           )}
                           <div
                             className={clsx("truncate", {
-                              "font-semibold": selected,
+                              "font-medium": selected,
                             })}
                           >
                             {option.label}

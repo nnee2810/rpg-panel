@@ -40,7 +40,7 @@ export default function Modal({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-lg space-y-4 transform rounded-lg bg-gray-800 p-6 text-left transition-all">
-                <Dialog.Title as="h3" className="text-xl font-semibold">
+                <Dialog.Title as="h3" className="text-xl font-medium">
                   {title}
                 </Dialog.Title>
                 {children}

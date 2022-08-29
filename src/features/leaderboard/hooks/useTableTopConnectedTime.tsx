@@ -37,11 +37,7 @@ export default function useTableTopConnectedTime() {
       },
       {
         header: "Tên",
-        cell: ({
-          row: {
-            original: { name, Status },
-          },
-        }) => <UserLink name={name} online={!!Status} />,
+        cell: ({ row: { original } }) => <UserLink data={original} />,
       },
       {
         header: "Thời gian chơi",

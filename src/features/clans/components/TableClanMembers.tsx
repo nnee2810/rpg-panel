@@ -6,7 +6,7 @@ interface TableClanMembersProps {
 }
 
 export default function TableClanMembers({ id }: TableClanMembersProps) {
-  const { getHeaderGroups, getRowModel, data, isLoading, handleChangePage } =
+  const { getHeaderGroups, getRowModel, data, isLoading, updateQuery } =
     useTableClanMembers(id)
 
   return (
@@ -20,7 +20,7 @@ export default function TableClanMembers({ id }: TableClanMembersProps) {
         <Pagination
           currentPage={data.page}
           totalPage={Math.ceil(data.total / data.take)}
-          onPageChange={handleChangePage}
+          onPageChange={(page) => updateQuery({ page })}
         />
       )}
     </div>

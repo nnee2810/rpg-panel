@@ -26,22 +26,12 @@ export default function useTableTickets(query: GetTicketsDto) {
         accessorKey: "id",
       },
       {
-        header: "Người tạo",
-        cell: ({
-          row: {
-            original: {
-              user: { name, Status },
-            },
-          },
-        }) => <UserLink name={name} online={!!Status} />,
+        header: "Tiêu đề",
+        accessorKey: "title",
       },
       {
         header: "Phân loại",
         accessorKey: "category",
-      },
-      {
-        header: "Tiêu đề",
-        accessorKey: "title",
       },
       {
         header: "Trạng thái",
@@ -59,6 +49,15 @@ export default function useTableTickets(query: GetTicketsDto) {
         ),
       },
       {
+        header: "Người tạo",
+        cell: ({
+          row: {
+            original: { user },
+          },
+        }) => <UserLink data={user} />,
+      },
+
+      {
         header: "Ngày cập nhật",
         accessorFn: ({ updatedAt }) =>
           moment(updatedAt).format("DD/MM/YYYY HH:mm"),
@@ -72,17 +71,17 @@ export default function useTableTickets(query: GetTicketsDto) {
         header: "Hành động",
         cell: ({
           row: {
-            original: { id, status },
+            original: { id },
           },
         }) => (
           <div className="flex space-x-2 text-xl">
-            <Link to={`/tickets/${id}`}>
+            <div className="flex space-x-2 text-xl">
               <Tooltip content="Chi tiết">
-                <div>
+                <Link to={`/tickets/${id}`}>
                   <AiOutlineEye />
-                </div>
+                </Link>
               </Tooltip>
-            </Link>
+            </div>
           </div>
         ),
       },

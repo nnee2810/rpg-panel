@@ -6,13 +6,13 @@ import {
 } from "@tanstack/react-table"
 import { UserLink } from "components/core"
 import { API } from "configs/api"
+import { PaginationDto } from "dto"
 import { IUser } from "features/users/interfaces"
 import { PaginationData } from "interfaces"
 import qs from "qs"
 import { useMemo, useState } from "react"
-import { GetFactionMembersDto } from "../dto"
 
-function useGetFactionMembers({ id, ...query }: GetFactionMembersDto) {
+function useGetFactionMembers(id: string, query: PaginationDto) {
   const queryString = qs.stringify(query, {
     skipNulls: true,
   })
@@ -29,18 +29,20 @@ function useGetFactionMembers({ id, ...query }: GetFactionMembersDto) {
 }
 
 export default function useTableFactionMembers(id: string) {
-  const [query, setQuery] = useState<GetFactionMembersDto>({ id })
-  const { data, isLoading, isFetching } = useGetFactionMembers(query)
+  const [query, setQuery] = useState<PaginationDto>({})
+  const { data, isLoading, isFetching } = useGetFactionMembers(id, query)
 
+  const updateQuery = (values: PaginationDto) => {
+    setQuery({
+      ...query,
+      ...values,
+    })
+  }
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [
       {
         header: "Tên",
-        cell: ({
-          row: {
-            original: { name, Status },
-          },
-        }) => <UserLink name={name} online={!!Status} />,
+        cell: ({ row: { original } }) => <UserLink data={original} />,
       },
       {
         header: "Rank",
@@ -66,15 +68,12 @@ export default function useTableFactionMembers(id: string) {
     data: data?.data || [],
     getCoreRowModel: getCoreRowModel(),
   })
-  const handleChangePage = (page: number) => {
-    setQuery({ ...query, page })
-  }
 
   return {
     getHeaderGroups,
     getRowModel,
     data,
     isLoading: isLoading || isFetching,
-    handleChangePage,
+    updateQuery,
   }
 }

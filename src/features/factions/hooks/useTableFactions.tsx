@@ -4,12 +4,14 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import { Tooltip } from "components/basic"
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { useAppSelector } from "hooks"
 import { PaginationData } from "interfaces"
 import qs from "qs"
 import { useMemo, useState } from "react"
+import { AiOutlineEye } from "react-icons/ai"
 import { Link } from "react-router-dom"
 import { userSelector } from "store/reducers/user"
 import { IFaction } from "../interfaces"
@@ -35,15 +37,7 @@ export default function useTableFactions() {
     () => [
       {
         header: "Faction",
-        cell: ({
-          row: {
-            original: { ID, Name },
-          },
-        }) => (
-          <Link to={`/factions/${ID}`} className="text-emerald-500">
-            {Name}
-          </Link>
-        ),
+        accessorKey: "Name",
       },
       {
         header: "Thành viên",
@@ -72,6 +66,22 @@ export default function useTableFactions() {
           }
           return <div>Không tuyển dụng</div>
         },
+      },
+      {
+        header: "Hành động",
+        cell: ({
+          row: {
+            original: { ID },
+          },
+        }) => (
+          <div className="flex space-x-2 text-xl">
+            <Tooltip content="Chi tiết">
+              <Link to={`/factions/${ID}`}>
+                <AiOutlineEye />
+              </Link>
+            </Tooltip>
+          </div>
+        ),
       },
     ],
     [profile]

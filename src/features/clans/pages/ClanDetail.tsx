@@ -17,6 +17,7 @@ export default function ClanDetail() {
       <PageHeader>
         Clan <span style={{ color: `#${data.Color}` }}>{data.Name}</span>
       </PageHeader>
+
       <div className="grid grid-cols-3 gap-4">
         <ClanOverview data={data} />
         <div className="col-span-2">

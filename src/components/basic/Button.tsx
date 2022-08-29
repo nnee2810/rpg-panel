@@ -49,7 +49,7 @@ export default function Button({
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="font-semibold">{children}</div>
+      <div className="font-medium">{children}</div>
     </button>
   )
 }

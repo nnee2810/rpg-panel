@@ -21,11 +21,7 @@ export default function useTableOnline() {
     () => [
       {
         header: "Tên người chơi",
-        cell: ({
-          row: {
-            original: { name },
-          },
-        }) => <UserLink name={name} online />,
+        cell: ({ row: { original } }) => <UserLink data={original} />,
       },
       {
         header: "Level",

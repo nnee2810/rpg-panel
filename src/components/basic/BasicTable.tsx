@@ -8,6 +8,7 @@ const BasicTable = styled.table`
   td {
     padding: 16px;
     &:first-child {
+      white-space: nowrap;
       font-weight: 500;
       border-right: 1px solid #2b3544;
     }

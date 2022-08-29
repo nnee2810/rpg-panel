@@ -1,11 +1,26 @@
+import { Pagination, Table } from "components/basic"
 import { PageHeader } from "components/core"
-import { TableClans } from "../components"
+import { useTableClans } from "../hooks"
 
 export default function Clans() {
+  const { getHeaderGroups, getRowModel, data, isLoading, handleChangePage } =
+    useTableClans()
+
   return (
     <div className="space-y-4">
       <PageHeader>Clan</PageHeader>
-      <TableClans />
+      <Table
+        headerGroup={getHeaderGroups()}
+        rowModel={getRowModel()}
+        isLoading={isLoading}
+      />
+      {data && (
+        <Pagination
+          currentPage={data.page}
+          totalPage={Math.ceil(data.total / data.take)}
+          onPageChange={handleChangePage}
+        />
+      )}
     </div>
   )
 }

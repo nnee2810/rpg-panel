@@ -38,13 +38,13 @@ function renderText(text: string) {
 
   return (
     <>
-      <UserLink name={playerName} />{" "}
+      <UserLink data={playerName} />{" "}
       {leaderNameIdx < 1 ? (
         words.join(" ")
       ) : (
         <>
           {words.slice(0, leaderNameIdx).join(" ")}{" "}
-          <UserLink name={leaderName} />
+          <UserLink data={leaderName} />
           {words.slice(leaderNameIdx + 2).join(" ")}
         </>
       )}

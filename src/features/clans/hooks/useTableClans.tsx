@@ -4,12 +4,14 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import { Tooltip } from "components/basic"
 import { UserLink } from "components/core"
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { PaginationData } from "interfaces"
 import qs from "qs"
 import { useMemo, useState } from "react"
+import { AiOutlineEye } from "react-icons/ai"
 import { Link } from "react-router-dom"
 import { IClan } from "../interfaces"
 
@@ -33,15 +35,7 @@ export default function useTableClans() {
     () => [
       {
         header: "Clan",
-        cell: ({
-          row: {
-            original: { ID, Name, Tag },
-          },
-        }) => (
-          <Link to={`/clans/${ID}`} className="text-emerald-500">
-            {Name}
-          </Link>
-        ),
+        accessorKey: "Name",
       },
       {
         header: "Tag",
@@ -57,7 +51,7 @@ export default function useTableClans() {
           row: {
             original: { Owner },
           },
-        }) => <UserLink name={Owner} />,
+        }) => <UserLink data={Owner} />,
       },
       {
         header: "Thành viên",
@@ -66,6 +60,22 @@ export default function useTableClans() {
       {
         header: "Ngày thành lập",
         accessorKey: "RegisterDate",
+      },
+      {
+        header: "Hành động",
+        cell: ({
+          row: {
+            original: { ID },
+          },
+        }) => (
+          <div className="flex space-x-2 text-xl">
+            <Tooltip content="Chi tiết">
+              <Link to={`/clans/${ID}`}>
+                <AiOutlineEye />
+              </Link>
+            </Tooltip>
+          </div>
+        ),
       },
     ],
     []

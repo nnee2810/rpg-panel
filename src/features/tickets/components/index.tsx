@@ -1,2 +1,6 @@
 export { default as ModalCreateTicket } from "./ModalCreateTicket"
 export { default as SearchTickets } from "./SearchTickets"
+export { default as TicketComment } from "./TicketComment"
+export { default as TicketComments } from "./TicketComments"
+export { default as TicketCreateComment } from "./TicketCreateComment"
+export { default as TicketOverview } from "./TicketOverview"

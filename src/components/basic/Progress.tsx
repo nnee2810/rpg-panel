@@ -6,7 +6,7 @@ interface ProgressProps {
 export default function Progress({ steps, currentStep }: ProgressProps) {
   return (
     <div className="relative shadow-lg">
-      <div className="font-semibold">
+      <div className="font-medium">
         {currentStep > steps.length ? "Hoàn thành 🎉" : steps[currentStep - 1]}
       </div>
       <div className="mt-1 h-3 bg-gray-600 rounded-md" />

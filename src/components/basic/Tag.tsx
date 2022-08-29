@@ -22,7 +22,7 @@ export default function Tag({
     <div
       {...props}
       className={clsx(
-        "w-10 min-w-max inline-block px-2 py-0.5 text-sm text-center rounded-md",
+        "w-8 min-w-max inline-block px-2 py-0.5 text-sm font-medium text-center rounded-md",
         tagScheme[scheme],
         className
       )}

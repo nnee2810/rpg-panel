@@ -21,7 +21,7 @@ export default function ClanOverview({ data }: ClanOverviewProps) {
         <tr>
           <td>Chủ clan</td>
           <td>
-            <UserLink name={data.Owner} />
+            <UserLink data={data.Owner} />
           </td>
         </tr>
         <tr>

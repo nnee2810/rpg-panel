@@ -26,6 +26,7 @@ export default function FactionDetail() {
       <PageHeader>
         Faction <span className="text-emerald-500">{data?.Name}</span>
       </PageHeader>
+
       <div className="grid grid-cols-3 gap-4">
         <FactionOverview data={data} />
         <div className="col-span-2">

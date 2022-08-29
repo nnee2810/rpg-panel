@@ -15,7 +15,9 @@ export default function ProfileProperties({ name }: ProfilePropertiesProps) {
 
   return data ? (
     <div className="bg-gray-800 rounded-md">
-      <div className="p-4 font-bold border-b border-gray-700">Phương tiện</div>
+      <div className="p-4 font-medium border-b border-gray-700">
+        Phương tiện
+      </div>
       {data.vehicles.length ? (
         <Table headerGroup={getHeaderGroups()} rowModel={getRowModel()} />
       ) : (
@@ -23,7 +25,9 @@ export default function ProfileProperties({ name }: ProfilePropertiesProps) {
           <AlertMessage scheme="error">Không có phương tiện</AlertMessage>
         </div>
       )}
-      <div className="p-4 font-bold border-b border-gray-700">Bất động sản</div>
+      <div className="p-4 font-medium border-b border-gray-700">
+        Bất động sản
+      </div>
       <div className="p-4 grid grid-cols-2 gap-4 items-start">
         {data?.house ? (
           <BasicTable>

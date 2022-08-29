@@ -32,7 +32,7 @@ export default function Tabs({ tabs, children }: TabsProps) {
                       className="absolute top-0 left-0 w-full h-full bg-emerald-500 shadow-xl shadow-emerald-500/50 rounded-md z-0"
                     />
                   )}
-                  <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center space-x-1 font-semibold z-10">
+                  <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center space-x-1 font-medium z-10">
                     <div className="text-xl">{tab.icon}</div>
                     <div>{tab.label}</div>
                   </div>

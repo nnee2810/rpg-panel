@@ -6,14 +6,13 @@ import {
 } from "@tanstack/react-table"
 import { UserLink } from "components/core"
 import { API } from "configs/api"
-import { GetFactionMembersDto } from "features/factions/dto"
+import { PaginationDto } from "dto"
 import { IUser } from "features/users/interfaces"
 import { PaginationData } from "interfaces"
 import qs from "qs"
 import { useMemo, useState } from "react"
-import { GetClanMembersDto } from "../dto"
 
-function useGetClanMembers({ id, ...query }: GetClanMembersDto) {
+function useGetClanMembers(id: string, query: PaginationDto) {
   const queryString = qs.stringify(query, {
     skipNulls: true,
   })
@@ -30,18 +29,20 @@ function useGetClanMembers({ id, ...query }: GetClanMembersDto) {
 }
 
 export default function useTableClanMembers(id: string) {
-  const [query, setQuery] = useState<GetFactionMembersDto>({ id })
-  const { data, isLoading, isFetching } = useGetClanMembers(query)
+  const [query, setQuery] = useState<PaginationDto>({})
+  const { data, isLoading, isFetching } = useGetClanMembers(id, query)
 
+  const updateQuery = (values: PaginationDto) => {
+    setQuery({
+      ...query,
+      ...values,
+    })
+  }
   const columns = useMemo<ColumnDef<IUser>[]>(
     () => [
       {
         header: "Tên",
-        cell: ({
-          row: {
-            original: { name, Status },
-          },
-        }) => <UserLink name={name} online={!!Status} />,
+        cell: ({ row: { original } }) => <UserLink data={original} />,
       },
       {
         header: "Rank",
@@ -67,15 +68,12 @@ export default function useTableClanMembers(id: string) {
     data: data?.data || [],
     getCoreRowModel: getCoreRowModel(),
   })
-  const handleChangePage = (page: number) => {
-    setQuery({ ...query, page })
-  }
 
   return {
     getHeaderGroups,
     getRowModel,
     data,
     isLoading: isLoading || isFetching,
-    handleChangePage,
+    updateQuery,
   }
 }

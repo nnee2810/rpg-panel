@@ -19,11 +19,7 @@ export default function useTableHelper() {
     () => [
       {
         header: "Tên",
-        cell: ({
-          row: {
-            original: { name, Status },
-          },
-        }) => <UserLink name={name} online={!!Status} />,
+        cell: ({ row: { original } }) => <UserLink data={original} />,
       },
       {
         header: "Helper",

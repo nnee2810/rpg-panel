@@ -6,7 +6,7 @@ interface TableFactionMembersProps {
 }
 
 export default function TableFactionMembers({ id }: TableFactionMembersProps) {
-  const { getHeaderGroups, getRowModel, data, isLoading, handleChangePage } =
+  const { getHeaderGroups, getRowModel, data, isLoading, updateQuery } =
     useTableFactionMembers(id)
 
   return (
@@ -20,7 +20,7 @@ export default function TableFactionMembers({ id }: TableFactionMembersProps) {
         <Pagination
           currentPage={data.page}
           totalPage={Math.ceil(data.total / data.take)}
-          onPageChange={handleChangePage}
+          onPageChange={(page) => updateQuery({ page })}
         />
       )}
     </div>
