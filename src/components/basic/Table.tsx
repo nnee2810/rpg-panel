@@ -2,7 +2,6 @@ import { flexRender, HeaderGroup, RowModel } from "@tanstack/react-table"
 import clsx from "clsx"
 import { AnimatePresence, motion } from "framer-motion"
 import Empty from "./Empty"
-import Spin from "./Spin"
 
 interface TableProps<T> {
   headerGroup: HeaderGroup<T>[]
@@ -72,9 +71,21 @@ export default function Table<T>({
               show: { opacity: 1 },
               hide: { opacity: 0 },
             }}
-            className="absolute top-0 w-full h-full flex justify-center items-center bg-gray-800/75"
+            className="absolute top-0 w-full h-2 overflow-hidden"
           >
-            <Spin className="text-4xl" />
+            <motion.div
+              animate={{
+                left: ["0%", "100%"],
+                x: ["-100%", "0%"],
+                width: ["20%", "30%", "5%"],
+                transition: {
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeOut",
+                },
+              }}
+              className="absolute top-0 h-full bg-emerald-500 rounded-md"
+            ></motion.div>
           </motion.div>
         )}
       </AnimatePresence>
