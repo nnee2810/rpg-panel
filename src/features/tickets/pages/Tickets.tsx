@@ -3,7 +3,11 @@ import { PageHeader } from "components/core"
 import { useAppSelector, useBoolean } from "hooks"
 import { useCallback, useState } from "react"
 import { userSelector } from "store/reducers/user"
-import { ModalCreateTicket, SearchTickets } from "../components"
+import {
+  ModalCreateTicket,
+  SearchTickets,
+  TicketsStatistic,
+} from "../components"
 import { GetTicketsDto } from "../dto"
 import { useTableTickets } from "../hooks"
 
@@ -28,6 +32,7 @@ export default function Tickets() {
   return (
     <div className="space-y-4">
       <PageHeader>Hỗ trợ</PageHeader>
+      <TicketsStatistic />
       <div className="flex justify-between">
         {profile?.Admin ? (
           <div />

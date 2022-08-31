@@ -1,6 +1,7 @@
 export { default as AlertMessage } from "./AlertMessage"
 export { default as BasicTable } from "./BasicTable"
 export { default as Button } from "./Button"
+export { default as Card } from "./Card"
 export { default as Collapse } from "./Collapse"
 export { default as Empty } from "./Empty"
 export { default as Input } from "./Input"

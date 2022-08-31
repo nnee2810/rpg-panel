@@ -1,1 +1,1 @@
-export { default as useGetStatisticOverview } from "./useGetStatisticOverview"
+export { default as useGetServerStatistic } from "./useGetServerStatistic"

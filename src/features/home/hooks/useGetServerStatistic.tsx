@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { API } from "configs/api"
 import { IFactionLog } from "features/factions/interfaces"
 
-interface GetStatisticOverviewResponse {
+interface GetServerStatisticResponse {
   online: number
   registered: number
   houses: number
@@ -10,10 +10,10 @@ interface GetStatisticOverviewResponse {
   faction_logs: IFactionLog[]
 }
 
-export default function useGetStatisticOverview() {
+export default function useGetServerStatistic() {
   return useQuery(
-    ["get-statistic-overview"],
+    ["get-server-statistic"],
     async () =>
-      (await API.get<GetStatisticOverviewResponse>("/statistic/overview")).data
+      (await API.get<GetServerStatisticResponse>("/statistic/server")).data
   )
 }
