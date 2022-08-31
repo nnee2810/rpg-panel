@@ -15,6 +15,8 @@ export enum TicketStatus {
 export interface ITicket {
   id: number
   user: IUser
+  assignTo?: IUser
+  closeBy?: IUser
   category: TicketCategory
   status: TicketStatus
   title: string

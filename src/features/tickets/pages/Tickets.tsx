@@ -6,13 +6,10 @@ import { userSelector } from "store/reducers/user"
 import { ModalCreateTicket, SearchTickets } from "../components"
 import { GetTicketsDto } from "../dto"
 import { useTableTickets } from "../hooks"
-import { TicketStatus } from "../interfaces"
 
 export default function Tickets() {
   const { profile } = useAppSelector(userSelector)
-  const [query, setQuery] = useState<GetTicketsDto>({
-    status: TicketStatus.OPEN,
-  })
+  const [query, setQuery] = useState<GetTicketsDto>({})
   const { getHeaderGroups, getRowModel, data, isLoading } =
     useTableTickets(query)
   const [openCreate, setOpenCreate] = useBoolean()
@@ -54,7 +51,7 @@ export default function Tickets() {
         />
       )}
       <ModalCreateTicket
-        title="Tạo phiếu hỗ trợ"
+        title="Tạo phiếu"
         open={openCreate}
         onClose={setOpenCreate.off}
       />

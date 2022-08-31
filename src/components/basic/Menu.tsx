@@ -44,7 +44,7 @@ export default function Menu({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <M.Items className="absolute right-0 mt-2 w-56 bg-gray-700 rounded-lg shadow-xl">
+        <M.Items className="absolute right-0 mt-2 w-56 bg-gray-700 rounded-lg shadow-xl focus:outline-none">
           <div className="py-1">
             {Children.toArray(children).map((item, idx) => (
               <M.Item key={idx}>
@@ -60,7 +60,7 @@ export default function Menu({
                       ),
                     })
                   ) : (
-                    <div></div>
+                    <div />
                   )
                 }
               </M.Item>

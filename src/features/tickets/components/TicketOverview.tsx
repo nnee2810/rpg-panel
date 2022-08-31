@@ -41,6 +41,10 @@ export default function TicketOverview({ data }: TicketOverviewProps) {
           <td>{data.description}</td>
         </tr>
         <tr>
+          <td>Hoạt động cuối</td>
+          <td>{moment(data.updatedAt).format("DD/MM/YYYY HH:mm")}</td>
+        </tr>
+        <tr>
           <td>Ngày tạo</td>
           <td>{moment(data.createdAt).format("DD/MM/YYYY HH:mm")}</td>
         </tr>

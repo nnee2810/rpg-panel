@@ -1,4 +1,4 @@
-import { BasicTable, Ping, Tag } from "components/basic"
+import { BasicTable, Tag } from "components/basic"
 import { factions, jobs } from "configs/constants"
 import { formatConnectedTime } from "utils/format"
 import { IUser } from "../interfaces"
@@ -13,12 +13,7 @@ export default function ProfileOverview({ data }: ProfileOverviewProps) {
       <tbody>
         <tr>
           <td>Tên</td>
-          <td>
-            <div className="flex items-center space-x-2">
-              <Ping online={!!data.Status} />
-              <div>{data.name}</div>
-            </div>
-          </td>
+          <td>{data.name}</td>
         </tr>
         <tr>
           <td>Cảnh cáo</td>

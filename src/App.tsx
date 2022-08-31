@@ -15,9 +15,6 @@ const queryClient = new QueryClient({
       retry: 1,
       onError: handleAxiosError,
     },
-    mutations: {
-      onError: handleAxiosError,
-    },
   },
 })
 
@@ -30,7 +27,7 @@ export default function App() {
         </Suspense>
       </BrowserRouter>
       <Toaster
-        position="top-right"
+        position="top-center"
         toastOptions={{
           style: {
             background: "rgb(51 65 85)",

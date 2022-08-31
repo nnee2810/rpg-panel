@@ -58,7 +58,7 @@ export default function useTableTickets(query: GetTicketsDto) {
       },
 
       {
-        header: "Ngày cập nhật",
+        header: "Hoạt động cuối",
         accessorFn: ({ updatedAt }) =>
           moment(updatedAt).format("DD/MM/YYYY HH:mm"),
       },

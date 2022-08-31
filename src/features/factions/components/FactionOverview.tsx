@@ -1,5 +1,5 @@
-import { BasicTable, Ping } from "components/basic"
-import { Link } from "react-router-dom"
+import { BasicTable } from "components/basic"
+import { UserLink } from "components/core"
 import { IFaction } from "../interfaces"
 
 interface FactionOverviewProps {
@@ -16,21 +16,7 @@ export default function FactionOverview({ data }: FactionOverviewProps) {
         </tr>
         <tr>
           <td>Leader</td>
-          <td>
-            {data?.Leader ? (
-              <div className="flex items-center space-x-2">
-                <Ping online={!!data?.Leader.Status} />
-                <Link
-                  to={`/users/${data?.Leader.name}`}
-                  className="text-emerald-500"
-                >
-                  {data?.Leader.name}
-                </Link>
-              </div>
-            ) : (
-              "-"
-            )}
-          </td>
+          <td>{data?.Leader ? <UserLink data={data?.Leader} /> : "-"}</td>
         </tr>
         <tr>
           <td>Thông báo</td>

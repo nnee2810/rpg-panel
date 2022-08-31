@@ -28,7 +28,7 @@ export default function SignIn() {
             type="submit"
             scheme="primary"
             isLoading={isLoading}
-            className="mt-6"
+            className="w-full mt-6"
           >
             Đăng nhập
           </Button>

@@ -1,16 +1,11 @@
-import clsx from "clsx"
-import { Menu, Ping, Tag } from "components/basic"
-import { IProfile } from "features/users/interfaces"
+import { Menu, Tag } from "components/basic"
+import { UserLink } from "components/core"
+import { IUser } from "features/users/interfaces"
 import { useAppDispatch, useAppSelector } from "hooks"
 import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { Link } from "react-router-dom"
 import { signOut, userSelector } from "store/reducers/user"
-
-function getNameColor(profile: IProfile | null) {
-  if (profile?.Admin || profile?.Helper) return "text-emerald-500"
-  return ""
-}
 
 export default function Header() {
   const dispatch = useAppDispatch()
@@ -21,14 +16,8 @@ export default function Header() {
       <Link to="/">Logo</Link>
       <div className="flex items-center space-x-2">
         <div>
-          <div
-            className={clsx(
-              "flex justify-end items-center space-x-1 text-sm",
-              getNameColor(profile)
-            )}
-          >
-            <div>{profile?.name}</div>
-            <Ping online={!!profile?.Status} />
+          <div className="text-right">
+            <UserLink data={profile as IUser} />
           </div>
           <div>
             <Tag scheme="primary">

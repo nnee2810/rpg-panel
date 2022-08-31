@@ -1,8 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation } from "@tanstack/react-query"
 import { API } from "configs/api"
-import { requiredMessage } from "helpers"
+import { getAxiosMessageError, requiredMessage } from "helpers"
 import { useForm } from "react-hook-form"
+import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import { setToken } from "utils/token"
 import * as yup from "yup"
@@ -22,18 +23,27 @@ export default function useSignIn() {
     },
     resolver: yupResolver(schema),
   })
-  const { mutate, isLoading } = useMutation(
+  const { mutateAsync, isLoading } = useMutation(
     async (data: SignInDto) =>
       (await API.post<string>("/auth/sign-in", data)).data
   )
 
   const handleSubmit = methods.handleSubmit((values) => {
-    mutate(values, {
-      onSuccess(data) {
-        setToken(data)
-        navigate("/")
-      },
-    })
+    if (isLoading) return
+    toast.promise(
+      mutateAsync(values, {
+        onSuccess(data) {},
+      }),
+      {
+        loading: "Đang kiểm tra tài khoản...",
+        success(token) {
+          setToken(token)
+          navigate("/")
+          return "Đăng nhập thành công"
+        },
+        error: (error) => getAxiosMessageError(error),
+      }
+    )
   })
 
   return { methods, handleSubmit, isLoading }

@@ -2,7 +2,7 @@ import { Empty, Pagination, Tag } from "components/basic"
 import { Loading } from "components/core"
 import { PaginationDto } from "dto"
 import { useState } from "react"
-import { TicketComment, TicketCreateComment } from "."
+import { TicketComment } from "."
 import { useGetTicketComments } from "../hooks"
 
 interface TicketCommentsProps {
@@ -21,7 +21,7 @@ export default function TicketComments({ id }: TicketCommentsProps) {
   }
 
   return (
-    <div className="p-4 space-y-4 bg-gray-800 rounded-md">
+    <>
       <div className="flex items-center space-x-2">
         <div className="text-md font-medium">Phản hồi</div>
         <Tag scheme="primary">{data?.total || 0}</Tag>
@@ -38,11 +38,10 @@ export default function TicketComments({ id }: TicketCommentsProps) {
             totalPage={Math.ceil(data.total / data.take)}
             onPageChange={(page) => updateQuery({ page })}
           />
-          <TicketCreateComment id={id} />
         </>
       ) : (
         <Empty />
       )}
-    </div>
+    </>
   )
 }

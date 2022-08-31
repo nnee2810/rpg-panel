@@ -5,14 +5,14 @@ import { ChangeEvent } from "react"
 import { FormProvider } from "react-hook-form"
 import { ticketCategoryOptions, ticketStatusOptions } from "../constants"
 import { GetTicketsDto } from "../dto"
-import { useFilterTickets } from "../hooks"
+import { useSearchTickets } from "../hooks"
 
 interface SearchTicketsProps {
   updateQuery(values: GetTicketsDto): void
 }
 
 export default function SearchTickets({ updateQuery }: SearchTicketsProps) {
-  const { methods, handleSubmit } = useFilterTickets({
+  const { methods, handleSubmit } = useSearchTickets({
     updateQuery,
   })
   const handleSearch = debounce((e: ChangeEvent<HTMLInputElement>) => {

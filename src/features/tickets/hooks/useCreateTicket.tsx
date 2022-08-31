@@ -1,7 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { API } from "configs/api"
-import { invalidMessage, maxLengthMessage, requiredMessage } from "helpers"
+import {
+  getAxiosMessageError,
+  invalidMessage,
+  maxLengthMessage,
+  requiredMessage,
+} from "helpers"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import * as yup from "yup"
@@ -39,18 +44,21 @@ export default function useCreateTicket({ onClose }: UseCreateTicketProps) {
     resolver: yupResolver(schema),
   })
   const queryClient = useQueryClient()
-  const { mutate, isLoading } = useMutation((data: CreateTicketDto) =>
+  const { mutateAsync, isLoading } = useMutation((data: CreateTicketDto) =>
     API.post("/tickets", data)
   )
 
   const handleSubmit = methods.handleSubmit((data: CreateTicketDto) => {
-    mutate(data, {
-      onSuccess() {
+    if (isLoading) return
+    toast.promise(mutateAsync(data), {
+      loading: "Đang tạo phiếu...",
+      success() {
         onClose()
         methods.reset()
-        toast.success("Phiếu hỗ trợ đã được gửi")
         queryClient.invalidateQueries(["get-tickets"])
+        return "Đã tạo phiếu"
       },
+      error: (error) => getAxiosMessageError(error),
     })
   })
 
