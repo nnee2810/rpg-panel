@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query"
 import { AlertMessage, Empty, Menu, Tooltip } from "components/basic"
-import { Loading, PageHeader, UserLink } from "components/core"
+import { Loading, PageHeader } from "components/core"
 import { getAxiosMessageError } from "helpers"
 import { useAppSelector } from "hooks"
 import toast from "react-hot-toast"
@@ -76,15 +76,7 @@ export default function TicketDetail() {
           {ticket.status === TicketStatus.OPEN ? (
             <TicketCreateComment id={id} />
           ) : (
-            <AlertMessage scheme="error">
-              {ticket.closeBy ? (
-                <>
-                  <UserLink data={ticket.closeBy} /> đã đóng phiếu
-                </>
-              ) : (
-                "Phiếu đã đóng"
-              )}
-            </AlertMessage>
+            <AlertMessage scheme="error">Phiếu đã đóng</AlertMessage>
           )}
         </div>
       </div>

@@ -1,9 +1,15 @@
 import { Button, Input, Popover, Select } from "components/basic"
 import { Field } from "components/core"
+import { useAppSelector } from "hooks"
 import debounce from "lodash/debounce"
 import { ChangeEvent } from "react"
 import { FormProvider } from "react-hook-form"
-import { ticketCategoryOptions, ticketStatusOptions } from "../constants"
+import { userSelector } from "store/reducers/user"
+import {
+  ticketAssignToOptions,
+  ticketCategoryOptions,
+  ticketStatusOptions,
+} from "../constants"
 import { GetTicketsDto } from "../dto"
 import { useSearchTickets } from "../hooks"
 
@@ -12,6 +18,7 @@ interface SearchTicketsProps {
 }
 
 export default function SearchTickets({ updateQuery }: SearchTicketsProps) {
+  const { profile } = useAppSelector(userSelector)
   const { methods, handleSubmit } = useSearchTickets({
     updateQuery,
   })
@@ -34,6 +41,11 @@ export default function SearchTickets({ updateQuery }: SearchTicketsProps) {
               <Field name="status" label="Trạng thái">
                 <Select options={ticketStatusOptions} />
               </Field>
+              {!!profile?.Admin && (
+                <Field name="assignToId" label="Người hỗ trợ">
+                  <Select options={ticketAssignToOptions} />
+                </Field>
+              )}
             </div>
             <div className="grid grid-cols-2 gap-2">
               <Button type="submit" scheme="primary">

@@ -22,10 +22,6 @@ export default function useTableTickets(query: GetTicketsDto) {
   const columns = useMemo<ColumnDef<ITicket>[]>(
     () => [
       {
-        header: "ID",
-        accessorKey: "id",
-      },
-      {
         header: "Tiêu đề",
         accessorKey: "title",
       },
@@ -56,11 +52,13 @@ export default function useTableTickets(query: GetTicketsDto) {
           },
         }) => <UserLink data={user} />,
       },
-
       {
-        header: "Hoạt động cuối",
-        accessorFn: ({ updatedAt }) =>
-          moment(updatedAt).format("DD/MM/YYYY HH:mm"),
+        header: "Người hỗ trợ",
+        cell: ({
+          row: {
+            original: { assignTo },
+          },
+        }) => (assignTo ? <UserLink data={assignTo} /> : "-"),
       },
       {
         header: "Ngày tạo",

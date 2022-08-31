@@ -18,6 +18,10 @@ export default function TicketOverview({ data }: TicketOverviewProps) {
           </td>
         </tr>
         <tr>
+          <td>Người hỗ trợ</td>
+          <td>{data.assignTo ? <UserLink data={data.assignTo} /> : "-"}</td>
+        </tr>
+        <tr>
           <td>Tiêu đề</td>
           <td>{data.title}</td>
         </tr>

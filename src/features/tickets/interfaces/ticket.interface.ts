@@ -1,6 +1,7 @@
 import { IUser } from "features/users/interfaces"
 
 export enum TicketCategory {
+  ALL = "ALL",
   GENERAL = "GENERAL",
   ACCOUNT = "ACCOUNT",
   DONATE = "DONATE",
@@ -8,6 +9,7 @@ export enum TicketCategory {
 }
 
 export enum TicketStatus {
+  ALL = "ALL",
   OPEN = "OPEN",
   CLOSE = "CLOSE",
 }
@@ -16,7 +18,6 @@ export interface ITicket {
   id: number
   user: IUser
   assignTo?: IUser
-  closeBy?: IUser
   category: TicketCategory
   status: TicketStatus
   title: string

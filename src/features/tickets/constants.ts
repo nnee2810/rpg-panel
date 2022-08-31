@@ -1,39 +1,48 @@
 import { SelectOption } from "components/basic/Select"
+import { TicketCategory, TicketStatus } from "./interfaces"
 
 export const ticketCategoryOptions: SelectOption[] = [
   {
     label: "Tất cả",
-    value: null,
+    value: TicketCategory.ALL,
   },
   {
     label: "Chung",
-    value: "GENERAL",
+    value: TicketCategory.GENERAL,
   },
   {
     label: "Tài khoản",
-    value: "ACCOUNT",
+    value: TicketCategory.ACCOUNT,
   },
   {
     label: "Nạp tiền",
-    value: "DONATE",
+    value: TicketCategory.DONATE,
   },
   {
     label: "Lỗi game",
-    value: "BUG",
+    value: TicketCategory.BUG,
   },
 ]
 
 export const ticketStatusOptions: SelectOption[] = [
   {
     label: "Tất cả",
-    value: null,
+    value: TicketStatus.ALL,
   },
   {
     label: "Đang mở",
-    value: "OPEN",
+    value: TicketStatus.OPEN,
   },
   {
     label: "Đã đóng",
-    value: "CLOSE",
+    value: TicketStatus.CLOSE,
   },
+]
+
+export const ticketAssignToOptions: SelectOption[] = [
+  {
+    label: "Tất cả",
+    value: 0,
+  },
+  { label: "Chỉ mình tôi", value: 1 },
 ]

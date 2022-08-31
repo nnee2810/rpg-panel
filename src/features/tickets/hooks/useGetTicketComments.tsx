@@ -17,6 +17,9 @@ export default function useGetTicketComments(id: string, query: PaginationDto) {
         await API.get<PaginationData<ITicketComment>>(
           `/tickets/${id}/comments?${queryString}`
         )
-      ).data
+      ).data,
+    {
+      refetchInterval: 2000,
+    }
   )
 }
