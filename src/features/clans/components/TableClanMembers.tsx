@@ -1,4 +1,4 @@
-import { Pagination, Table } from "components/basic"
+import { Pagination, Table } from "components"
 import useTableClanMembers from "../hooks/useTableClanMembers"
 
 interface TableClanMembersProps {

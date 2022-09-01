@@ -1,6 +1,12 @@
 import { useQueryClient } from "@tanstack/react-query"
-import { AlertMessage, Empty, Menu, Tooltip } from "components/basic"
-import { Loading, PageHeader } from "components/core"
+import {
+  AlertMessage,
+  Empty,
+  Loading,
+  Menu,
+  PageHeader,
+  Tooltip,
+} from "components"
 import { getAxiosMessageError } from "helpers"
 import { useAppSelector } from "hooks"
 import toast from "react-hot-toast"

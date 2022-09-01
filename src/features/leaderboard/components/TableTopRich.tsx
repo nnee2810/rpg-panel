@@ -1,4 +1,4 @@
-import { Table } from "components/basic"
+import { Table } from "components"
 import { useTableTopRich } from "../hooks"
 
 export default function TableTopRich() {

@@ -15,6 +15,7 @@ const FactionDetail = lazy(
 )
 const Clans = lazy(() => import("features/clans/pages/Clans"))
 const ClanDetail = lazy(() => import("features/clans/pages/ClanDetail"))
+const Donate = lazy(() => import("features/donate/pages/Donate"))
 const Tickets = lazy(() => import("features/tickets/pages/Tickets"))
 const TicketDetail = lazy(() => import("features/tickets/pages/TicketDetail"))
 
@@ -39,7 +40,12 @@ const routes: RouteObject[] = [
       },
       {
         path: "users",
-        children: [{ path: ":name", element: <UserProfile /> }],
+        children: [
+          {
+            path: ":name",
+            element: <UserProfile />,
+          },
+        ],
       },
       {
         path: "leaderboard",
@@ -76,6 +82,15 @@ const routes: RouteObject[] = [
           {
             path: ":id",
             element: <ClanDetail />,
+          },
+        ],
+      },
+      {
+        path: "donate",
+        children: [
+          {
+            path: "",
+            element: <Donate />,
           },
         ],
       },

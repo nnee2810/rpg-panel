@@ -1,5 +1,4 @@
-import { Empty, Tabs } from "components/basic"
-import { Loading, PageHeader } from "components/core"
+import { Empty, Loading, PageHeader, Tabs } from "components"
 import { AiOutlineUser } from "react-icons/ai"
 import { MdAirplanemodeActive } from "react-icons/md"
 import { useParams } from "react-router-dom"

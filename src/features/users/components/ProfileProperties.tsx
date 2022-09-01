@@ -1,5 +1,4 @@
-import { AlertMessage, BasicTable, Empty, Table } from "components/basic"
-import { Loading } from "components/core"
+import { AlertMessage, BasicTable, Empty, Loading, Table } from "components"
 import { formatCurrency } from "utils/format"
 import { useGetUserProperties, useTableVehicles } from "../hooks"
 

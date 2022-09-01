@@ -1,5 +1,4 @@
-import { Button, Input, Popover, Select } from "components/basic"
-import { Field } from "components/core"
+import { Button, Field, Input, Popover, Select } from "components"
 import { useAppSelector } from "hooks"
 import debounce from "lodash/debounce"
 import { ChangeEvent } from "react"

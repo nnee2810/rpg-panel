@@ -1,5 +1,4 @@
-import { Empty, Pagination, Tag } from "components/basic"
-import { Loading } from "components/core"
+import { Empty, Loading, Pagination, Tag } from "components"
 import { PaginationDto } from "dto"
 import { useState } from "react"
 import { TicketComment } from "."

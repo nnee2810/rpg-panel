@@ -1,5 +1,4 @@
-import { Button, Textarea } from "components/basic"
-import { Field } from "components/core"
+import { Button, Field, Textarea } from "components"
 import { FormProvider } from "react-hook-form"
 import { useCreateTicketComment } from "../hooks"
 

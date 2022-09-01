@@ -1,4 +1,4 @@
-import { UserLink } from "components/core"
+import { UserLink } from "components"
 import moment from "moment"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { ITicketComment } from "../interfaces"

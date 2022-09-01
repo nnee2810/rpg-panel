@@ -1,4 +1,4 @@
-import { Spin } from "components/basic"
+import { Spin } from "components"
 
 export default function Loading() {
   return (

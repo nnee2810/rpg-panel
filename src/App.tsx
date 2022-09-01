@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { PageLoading } from "components/core"
-import AppRoutes from "components/core/AppRoutes"
+import { AppRoutes, PageLoading } from "components"
 import { handleAxiosError } from "helpers"
 import "moment/locale/vi"
 import { Suspense } from "react"

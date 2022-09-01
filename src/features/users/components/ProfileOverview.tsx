@@ -1,4 +1,4 @@
-import { BasicTable, Tag } from "components/basic"
+import { BasicTable, Tag } from "components"
 import { factions, jobs } from "configs/constants"
 import { formatConnectedTime } from "utils/format"
 import { IUser } from "../interfaces"

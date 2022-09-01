@@ -1,4 +1,4 @@
-import { SelectOption } from "components/basic/Select"
+import { SelectOption } from "components/Select"
 import { TicketCategory, TicketStatus } from "./interfaces"
 
 export const ticketCategoryOptions: SelectOption[] = [

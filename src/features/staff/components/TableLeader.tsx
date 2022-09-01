@@ -1,4 +1,4 @@
-import { Pagination, Table } from "components/basic"
+import { Pagination, Table } from "components"
 import { useTableLeader } from "../hooks"
 
 export default function TableLeader() {

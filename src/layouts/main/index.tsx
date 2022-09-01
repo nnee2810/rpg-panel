@@ -1,4 +1,4 @@
-import { PageLoading } from "components/core"
+import { PageLoading } from "components"
 import { getProfile } from "features/auth/services"
 import { useAppDispatch, useAppSelector, useBoolean } from "hooks"
 import { useEffect } from "react"

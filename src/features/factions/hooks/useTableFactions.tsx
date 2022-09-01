@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { Tooltip } from "components/basic"
+import { Tooltip } from "components"
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { useAppSelector } from "hooks"

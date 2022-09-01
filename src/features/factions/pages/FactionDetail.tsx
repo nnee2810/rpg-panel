@@ -1,5 +1,4 @@
-import { Empty, Spin, Tabs } from "components/basic"
-import { PageHeader } from "components/core"
+import { Empty, PageHeader, Spin, Tabs } from "components"
 import {
   AiOutlineAudit,
   AiOutlineHistory,

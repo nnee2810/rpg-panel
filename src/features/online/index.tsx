@@ -1,5 +1,4 @@
-import { Pagination, Table } from "components/basic"
-import { PageHeader } from "components/core"
+import { PageHeader, Pagination, Table } from "components"
 import { useTableOnline } from "./hooks"
 
 export default function Online() {

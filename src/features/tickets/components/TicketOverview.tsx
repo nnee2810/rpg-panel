@@ -1,5 +1,4 @@
-import { BasicTable, Tag } from "components/basic"
-import { UserLink } from "components/core"
+import { BasicTable, Tag, UserLink } from "components"
 import moment from "moment"
 import { ITicket, TicketStatus } from "../interfaces"
 

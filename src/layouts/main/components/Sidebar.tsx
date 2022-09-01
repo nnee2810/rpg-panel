@@ -5,6 +5,7 @@ import { ReactNode } from "react"
 import {
   AiOutlineApartment,
   AiOutlineAudit,
+  AiOutlineHome,
   AiOutlineShop,
   AiOutlineTrophy,
   AiOutlineUserDelete,
@@ -14,7 +15,6 @@ import {
   BsArrowRight,
   BsCashCoin,
   BsPeople,
-  BsShield,
   BsShieldCheck,
 } from "react-icons/bs"
 import { IoTicketOutline } from "react-icons/io5"
@@ -24,88 +24,70 @@ import { toggleSidebar, userSelector } from "store/reducers/user"
 
 export default function Sidebar() {
   const dispatch = useAppDispatch()
-  const { profile, collapsed } = useAppSelector(userSelector)
+  const { collapsed } = useAppSelector(userSelector)
 
   return (
     <div className="relative bg-gray-800/50">
       <SimpleBar
         className={clsx(
-          "h-full py-4 transition-all duration-500",
+          "h-full transition-all duration-500",
           collapsed ? "w-14" : "w-60"
         )}
       >
         <LayoutGroup>
-          {(!!profile?.Admin || !!profile?.Leader) && (
-            <Section name="Quản lý">
-              {profile?.Admin === 7 && (
-                <SectionItem
-                  path="/manage/admin"
-                  name="Admin"
-                  icon={<BsShieldCheck />}
-                />
-              )}
-              {!!profile?.Leader && (
-                <SectionItem
-                  path="/manage/leader"
-                  name="Leader"
-                  icon={<BsShield />}
-                />
-              )}
-            </Section>
-          )}
-          <Section name="Điều hướng chính">
-            <SectionItem
-              path="/leaderboard"
-              name="Bảng xếp hạng"
-              icon={<AiOutlineTrophy />}
-            />
-            <SectionItem
-              path="/online"
-              name="Đang chơi"
-              icon={<AiOutlineWifi />}
-            />
-            <SectionItem
-              path="/staff"
-              name="Quản trị viên"
-              icon={<BsShieldCheck />}
-            />
-            <SectionItem
-              path="/factions"
-              name="Faction"
-              icon={<AiOutlineApartment />}
-            />
-            <SectionItem path="/clans" name="Clan" icon={<BsPeople />} />
-            <SectionItem
-              path="/shop"
-              name="Cửa hàng"
-              icon={<AiOutlineShop />}
-            />
-            <SectionItem
-              path="/donate"
-              name="Nạp lần đầu"
-              icon={<BsCashCoin />}
-            />
-            <SectionItem
-              path="/denounces"
-              name="Tố cáo"
-              icon={<AiOutlineAudit />}
-            />
-            <SectionItem
-              path="/tickets"
-              name="Hỗ trợ"
-              icon={<IoTicketOutline />}
-            />
-            <SectionItem
-              path="/bans"
-              name="Cấm chơi"
-              icon={<AiOutlineUserDelete />}
-            />
-          </Section>
+          <SectionItem
+            path="/"
+            name="Trang chủ"
+            icon={<AiOutlineHome />}
+            exact
+          />
+          <SectionItem
+            path="/leaderboard"
+            name="Bảng xếp hạng"
+            icon={<AiOutlineTrophy />}
+          />
+          <SectionItem
+            path="/online"
+            name="Đang chơi"
+            icon={<AiOutlineWifi />}
+          />
+          <SectionItem
+            path="/staff"
+            name="Quản trị viên"
+            icon={<BsShieldCheck />}
+          />
+          <SectionItem
+            path="/factions"
+            name="Faction"
+            icon={<AiOutlineApartment />}
+          />
+          <SectionItem path="/clans" name="Clan" icon={<BsPeople />} />
+          <SectionItem path="/shop" name="Cửa hàng" icon={<AiOutlineShop />} />
+          <SectionItem
+            path="/donate"
+            name="Nạp lần đầu"
+            icon={<BsCashCoin />}
+          />
+          <SectionItem
+            path="/denounces"
+            name="Tố cáo"
+            icon={<AiOutlineAudit />}
+          />
+          <SectionItem
+            path="/tickets"
+            name="Hỗ trợ"
+            icon={<IoTicketOutline />}
+          />
+          <SectionItem
+            path="/bans"
+            name="Cấm chơi"
+            icon={<AiOutlineUserDelete />}
+          />
         </LayoutGroup>
       </SimpleBar>
       <div
         className={clsx(
-          "absolute top-5 -right-4 p-2 bg-gray-800 text-lg rounded-full transition duration-500 cursor-pointer hover:bg-gray-700 z-10",
+          "absolute top-2 -right-4 p-2 bg-gray-800 text-lg rounded-full transition duration-500 cursor-pointer hover:bg-gray-700 z-10",
           { "rotate-180": !collapsed }
         )}
         onClick={() => dispatch(toggleSidebar())}
@@ -116,34 +98,22 @@ export default function Sidebar() {
   )
 }
 
-interface SectionProps {
-  name: string
-  children: ReactNode
-}
-function Section({ name, children }: SectionProps) {
-  return (
-    <div>
-      <div className="px-4 py-3 text-gray-400 text-xs font-bold truncate uppercase">
-        {name}
-      </div>
-      {children}
-    </div>
-  )
-}
-
 interface SectionItemProps {
   path: string
   name: string
   icon: ReactNode
+  exact?: boolean
 }
-function SectionItem({ icon, name, path }: SectionItemProps) {
+function SectionItem({ icon, name, path, exact }: SectionItemProps) {
   const location = useLocation()
   const { collapsed } = useAppSelector(userSelector)
 
   return (
     <Link to={path}>
       <div className="relative h-12 hover:bg-gray-700 transition">
-        {location.pathname.includes(path) && (
+        {(exact
+          ? location.pathname === path
+          : location.pathname.includes(path)) && (
           <motion.div
             layoutId="sidebar"
             className="absolute left-0 w-full h-full bg-emerald-500 z-0"

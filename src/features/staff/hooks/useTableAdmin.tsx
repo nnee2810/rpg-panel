@@ -3,7 +3,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { UserLink } from "components/core"
+import { UserLink } from "components"
 import { GetUsersDto } from "features/users/dto"
 import { useGetUsers } from "features/users/hooks"
 import { IUser } from "features/users/interfaces"

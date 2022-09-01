@@ -1,6 +1,5 @@
-import { Button, Input, Modal, Select, Textarea } from "components/basic"
-import { ModalProps } from "components/basic/Modal"
-import { Field } from "components/core"
+import { Button, Field, Input, Modal, Select, Textarea } from "components"
+import { ModalProps } from "components/Modal"
 import { FormProvider } from "react-hook-form"
 import { ticketCategoryOptions } from "../constants"
 import { useCreateTicket } from "../hooks"

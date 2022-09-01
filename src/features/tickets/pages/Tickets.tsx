@@ -1,5 +1,4 @@
-import { Button, Pagination, Table } from "components/basic"
-import { PageHeader } from "components/core"
+import { Button, PageHeader, Pagination, Table } from "components"
 import { useAppSelector, useBoolean } from "hooks"
 import { useCallback, useState } from "react"
 import { userSelector } from "store/reducers/user"

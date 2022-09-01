@@ -1,5 +1,4 @@
-import { Menu, Tag } from "components/basic"
-import { UserLink } from "components/core"
+import { Menu, Tag, UserLink } from "components"
 import { IUser } from "features/users/interfaces"
 import { useAppDispatch, useAppSelector } from "hooks"
 import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai"

@@ -1,5 +1,4 @@
-import { Tabs } from "components/basic"
-import { PageHeader } from "components/core"
+import { PageHeader, Tabs } from "components"
 import {
   TableTopConnectedTime,
   TableTopLevel,

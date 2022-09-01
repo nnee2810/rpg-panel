@@ -1,5 +1,4 @@
-import { BasicTable } from "components/basic"
-import { UserLink } from "components/core"
+import { BasicTable, UserLink } from "components"
 import { IClan } from "../interfaces"
 
 interface ClanOverviewProps {

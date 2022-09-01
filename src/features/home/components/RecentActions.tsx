@@ -1,4 +1,4 @@
-import { UserLink } from "components/core"
+import { UserLink } from "components"
 import { IFactionLog } from "features/factions/interfaces"
 import moment from "moment"
 import { AiOutlineClockCircle } from "react-icons/ai"

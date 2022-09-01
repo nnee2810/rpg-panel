@@ -1,5 +1,4 @@
-import { Card } from "components/basic"
-import { Loading } from "components/core"
+import { Card, Loading } from "components"
 import { BiCommentCheck, BiCommentDetail, BiCommentError } from "react-icons/bi"
 import { useGetTicketsStatistic } from "../hooks"
 

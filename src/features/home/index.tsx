@@ -1,6 +1,5 @@
-import { Empty } from "components/basic"
-import Card from "components/basic/Card"
-import { Loading, PageHeader } from "components/core"
+import { Empty, Loading, PageHeader } from "components"
+import Card from "components/Card"
 import {
   AiOutlineHome,
   AiOutlineUsergroupAdd,
@@ -17,7 +16,7 @@ export default function Home() {
 
   return data ? (
     <div className="space-y-4">
-      <PageHeader>Trang chính</PageHeader>
+      <PageHeader>Trang chủ</PageHeader>
       <div className="grid grid-cols-4 gap-4">
         <Card
           icon={<AiOutlineWifi />}

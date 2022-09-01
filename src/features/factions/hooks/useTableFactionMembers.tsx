@@ -4,7 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { UserLink } from "components/core"
+import { UserLink } from "components"
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { IUser } from "features/users/interfaces"

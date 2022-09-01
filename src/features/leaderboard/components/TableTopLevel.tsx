@@ -1,4 +1,4 @@
-import { Table } from "components/basic"
+import { Table } from "components"
 import { useTableTopLevel } from "../hooks"
 
 export default function TableTopLevel() {

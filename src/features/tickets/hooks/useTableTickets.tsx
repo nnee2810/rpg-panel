@@ -3,8 +3,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { Tag, Tooltip } from "components/basic"
-import { UserLink } from "components/core"
+import { Tag, Tooltip, UserLink } from "components"
 import { useAppSelector } from "hooks"
 import moment from "moment"
 import { useMemo } from "react"

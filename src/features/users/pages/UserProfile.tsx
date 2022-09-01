@@ -1,5 +1,4 @@
-import { Empty, Tabs } from "components/basic"
-import { Loading, PageHeader } from "components/core"
+import { Empty, Loading, PageHeader, Tabs } from "components"
 import {
   AiOutlineHistory,
   AiOutlineSkin,
