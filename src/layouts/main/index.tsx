@@ -30,14 +30,12 @@ export default function MainLayout() {
   return mounted ? (
     <div className="h-screen bg-gray-900">
       <Header />
-      <SimpleBar style={{ maxHeight: "calc(100vh - 64px)" }}>
-        <div className="flex" style={{ minHeight: "calc(100vh - 64px)" }}>
-          <Sidebar />
-          <div className="flex-1 px-8 py-6">
-            <Outlet />
-          </div>
-        </div>
-      </SimpleBar>
+      <div className="flex" style={{ height: "calc(100vh - 64px)" }}>
+        <Sidebar />
+        <SimpleBar className="flex-1 px-8 py-6">
+          <Outlet />
+        </SimpleBar>
+      </div>
     </div>
   ) : (
     <PageLoading />

@@ -16,7 +16,7 @@ export default function Header() {
       <Link to="/">Logo</Link>
       <div className="flex items-center space-x-2">
         <div>
-          <div className="text-right">
+          <div className="text-right text-sm">
             <UserLink data={profile as IUser} />
           </div>
           <div>
@@ -31,7 +31,7 @@ export default function Header() {
             <LazyLoadImage
               alt="avatar"
               src={`https://ui-avatars.com/api/?name=${profile?.name}&background=111827&color=fff`}
-              className="w-11 h-11 rounded-lg"
+              className="w-12 h-12 rounded-lg"
             />
           }
         >
