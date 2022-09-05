@@ -1,7 +1,7 @@
 import { cloneElement, ReactElement } from "react"
 import { Controller, useFormContext } from "react-hook-form"
 import { AiOutlineInfoCircle } from "react-icons/ai"
-import { Collapse, Tooltip } from "../basic"
+import { Collapse, Tooltip } from "."
 
 interface FieldProps {
   name: string

@@ -9,12 +9,13 @@ import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { IUser } from "features/users/interfaces"
 import { PaginationData } from "interfaces"
-import qs from "qs"
+import qs from "query-string"
 import { useMemo, useState } from "react"
 
 function useGetClanMembers(id: string, query: PaginationDto) {
   const queryString = qs.stringify(query, {
-    skipNulls: true,
+    skipEmptyString: true,
+    skipNull: true,
   })
 
   return useQuery(

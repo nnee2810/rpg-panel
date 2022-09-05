@@ -15,9 +15,14 @@ const FactionDetail = lazy(
 )
 const Clans = lazy(() => import("features/clans/pages/Clans"))
 const ClanDetail = lazy(() => import("features/clans/pages/ClanDetail"))
-const Donate = lazy(() => import("features/donate/pages/Donate"))
+const Shop = lazy(() => import("features/shop/pages/Shop"))
+const Topup = lazy(() => import("features/topup/pages/Topup"))
+const TxnLogs = lazy(() => import("features/topup/pages/TxnLogs"))
+const TxnResult = lazy(() => import("features/topup/pages/TxnResult"))
+const Complaints = lazy(() => import("features/complaints/pages/Complaints"))
 const Tickets = lazy(() => import("features/tickets/pages/Tickets"))
 const TicketDetail = lazy(() => import("features/tickets/pages/TicketDetail"))
+const Bans = lazy(() => import("features/bans/pages/Bans"))
 
 const routes: RouteObject[] = [
   {
@@ -86,11 +91,42 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        path: "donate",
+        path: "shop",
         children: [
           {
             path: "",
-            element: <Donate />,
+            element: <Shop />,
+          },
+        ],
+      },
+      {
+        path: "topup",
+        children: [
+          {
+            path: "",
+            element: <Topup />,
+          },
+          {
+            path: "txn",
+            children: [
+              {
+                path: "",
+                element: <TxnLogs />,
+              },
+              {
+                path: ":txnRef",
+                element: <TxnResult />,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: "complaints",
+        children: [
+          {
+            path: "",
+            element: <Complaints />,
           },
         ],
       },
@@ -104,6 +140,15 @@ const routes: RouteObject[] = [
           {
             path: ":id",
             element: <TicketDetail />,
+          },
+        ],
+      },
+      {
+        path: "bans",
+        children: [
+          {
+            path: "",
+            element: <Bans />,
           },
         ],
       },

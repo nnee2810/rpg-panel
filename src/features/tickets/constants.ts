@@ -16,7 +16,7 @@ export const ticketCategoryOptions: SelectOption[] = [
   },
   {
     label: "Nạp tiền",
-    value: TicketCategory.DONATE,
+    value: TicketCategory.TOPUP,
   },
   {
     label: "Lỗi game",

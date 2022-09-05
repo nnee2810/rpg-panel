@@ -21,6 +21,7 @@ export default function SearchTickets({ updateQuery }: SearchTicketsProps) {
   const { methods, handleSubmit } = useSearchTickets({
     updateQuery,
   })
+
   const handleSearch = debounce((e: ChangeEvent<HTMLInputElement>) => {
     updateQuery({
       title: e.target.value,

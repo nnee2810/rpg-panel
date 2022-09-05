@@ -9,7 +9,7 @@ import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { useAppSelector } from "hooks"
 import { PaginationData } from "interfaces"
-import qs from "qs"
+import qs from "query-string"
 import { useMemo, useState } from "react"
 import { AiOutlineEye } from "react-icons/ai"
 import { Link } from "react-router-dom"
@@ -18,7 +18,8 @@ import { IFaction } from "../interfaces"
 
 function useGetFactions(query: PaginationDto) {
   const queryString = qs.stringify(query, {
-    skipNulls: true,
+    skipEmptyString: true,
+    skipNull: true,
   })
 
   return useQuery(

@@ -14,7 +14,7 @@ export default function Leaderboard() {
           { label: "Top level" },
           { label: "Top giàu có" },
           { label: "Top giờ chơi" },
-          { label: "Top nạp lần đầu" },
+          { label: "Top nạp" },
         ]}
       >
         <TableTopLevel />

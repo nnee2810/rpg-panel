@@ -2,18 +2,18 @@ import { useQuery } from "@tanstack/react-query"
 import { API } from "configs/api"
 import { PaginationData } from "interfaces"
 import qs from "query-string"
-import { GetUsersDto } from "../dto"
-import { IUser } from "../interfaces"
+import { GetTxnLogsDto } from "../dto"
+import { ITxn } from "../interfaces"
 
-export default function useGetUsers(query: GetUsersDto) {
+export default function useGetTxnLogs(query: GetTxnLogsDto) {
   const queryString = qs.stringify(query, {
     skipEmptyString: true,
     skipNull: true,
   })
 
   return useQuery(
-    ["get-users", queryString],
+    ["get-txn-logs", queryString],
     async () =>
-      (await API.get<PaginationData<IUser>>(`/users?${queryString}`)).data
+      (await API.get<PaginationData<ITxn>>(`/topup/txn?${queryString}`)).data
   )
 }

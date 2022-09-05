@@ -5,6 +5,9 @@ export function formatConnectedTime(value: number) {
     (value - Math.floor(value)) * 60
   )} phút`
 }
-export function formatCurrency(value: number | string) {
-  return currency(value, { precision: 0 }).format({ separator: "." })
+export function formatCurrency(value: number | string, symbol?: string) {
+  return currency(value, { precision: 0 }).format({
+    separator: ".",
+    symbol: symbol ?? "$",
+  })
 }

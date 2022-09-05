@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query"
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { PaginationData } from "interfaces"
-import qs from "qs"
+import qs from "query-string"
 import { ITicketComment } from "../interfaces"
 
 export default function useGetTicketComments(id: string, query: PaginationDto) {
   const queryString = qs.stringify(query, {
-    skipNulls: true,
+    skipEmptyString: true,
+    skipNull: true,
   })
 
   return useQuery(

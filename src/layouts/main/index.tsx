@@ -32,7 +32,10 @@ export default function MainLayout() {
       <Header />
       <div className="flex" style={{ height: "calc(100vh - 64px)" }}>
         <Sidebar />
-        <SimpleBar className="flex-1 px-8 py-6">
+        <SimpleBar
+          className="flex-1 px-8 py-6"
+          style={{ height: "calc(100vh - 64px)" }}
+        >
           <Outlet />
         </SimpleBar>
       </div>

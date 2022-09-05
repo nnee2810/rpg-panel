@@ -22,6 +22,14 @@ const userSlice = createSlice({
         ...payload,
       }
     },
+    setUserProfile(state, { payload }: PayloadAction<Partial<IProfile>>) {
+      if (!state.profile) return
+      state.profile = {
+        ...state.profile,
+        ...payload,
+      }
+    },
+
     signOut() {
       localStorage.clear()
       return { ...initialState }
@@ -33,5 +41,6 @@ const userSlice = createSlice({
 })
 
 export const userSelector = (state: RootState) => state.user
-export const { setUser, signOut, toggleSidebar } = userSlice.actions
+export const { setUser, setUserProfile, signOut, toggleSidebar } =
+  userSlice.actions
 export const userReducer = userSlice.reducer

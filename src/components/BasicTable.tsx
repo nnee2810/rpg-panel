@@ -4,8 +4,10 @@ const BasicTable = styled.table`
   width: 100%;
   background-color: #1f2937;
   border-radius: 6px;
+  overflow: hidden;
 
   td {
+    width: 50%;
     padding: 16px;
     &:first-child {
       white-space: nowrap;

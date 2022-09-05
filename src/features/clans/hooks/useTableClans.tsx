@@ -8,7 +8,7 @@ import { Tooltip, UserLink } from "components"
 import { API } from "configs/api"
 import { PaginationDto } from "dto"
 import { PaginationData } from "interfaces"
-import qs from "qs"
+import qs from "query-string"
 import { useMemo, useState } from "react"
 import { AiOutlineEye } from "react-icons/ai"
 import { Link } from "react-router-dom"
@@ -16,7 +16,8 @@ import { IClan } from "../interfaces"
 
 function useGetClans(query: PaginationDto) {
   const queryString = qs.stringify(query, {
-    skipNulls: true,
+    skipEmptyString: true,
+    skipNull: true,
   })
 
   return useQuery(

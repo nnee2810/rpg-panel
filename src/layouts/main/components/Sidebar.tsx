@@ -63,14 +63,10 @@ export default function Sidebar() {
           />
           <SectionItem path="/clans" name="Clan" icon={<BsPeople />} />
           <SectionItem path="/shop" name="Cửa hàng" icon={<AiOutlineShop />} />
+          <SectionItem path="/topup" name="Nạp tiền" icon={<BsCashCoin />} />
           <SectionItem
-            path="/donate"
-            name="Nạp lần đầu"
-            icon={<BsCashCoin />}
-          />
-          <SectionItem
-            path="/denounces"
-            name="Tố cáo"
+            path="/complaints"
+            name="Kiện cáo"
             icon={<AiOutlineAudit />}
           />
           <SectionItem

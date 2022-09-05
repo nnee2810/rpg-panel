@@ -4,7 +4,7 @@ export enum TicketCategory {
   ALL = "ALL",
   GENERAL = "GENERAL",
   ACCOUNT = "ACCOUNT",
-  DONATE = "DONATE",
+  TOPUP = "TOPUP",
   BUG = "BUG",
 }
 

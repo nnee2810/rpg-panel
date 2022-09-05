@@ -34,31 +34,28 @@ export default function Table<T>({
           ))}
         </thead>
         <tbody>
-          {rowModel.rows.length
-            ? rowModel.rows.map((row, idx) => (
-                <tr
-                  className={clsx({ "bg-gray-700/20": idx % 2 })}
-                  key={row.id}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <td className="p-4" key={cell.id}>
-                      <div className="flex justify-center items-center">
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </div>
-                    </td>
-                  ))}
-                </tr>
-              ))
-            : !isLoading && (
-                <tr>
-                  <td colSpan={headerGroup[0].headers.length}>
-                    <Empty />
+          {rowModel.rows.length ? (
+            rowModel.rows.map((row, idx) => (
+              <tr className={clsx({ "bg-gray-700/20": idx % 2 })} key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td className="p-4" key={cell.id}>
+                    <div className="flex justify-center items-center">
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </div>
                   </td>
-                </tr>
-              )}
+                ))}
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={headerGroup[0].headers.length}>
+                <Empty />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
       <AnimatePresence>
