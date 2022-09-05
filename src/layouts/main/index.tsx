@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import SimpleBar from "simplebar-react"
 import { setUser, userSelector } from "store/reducers/user"
-import { getToken, isValidToken } from "utils/token"
+import { getToken, isValidToken } from "utils"
 import { Header, Sidebar } from "./components"
 
 export default function MainLayout() {
@@ -19,8 +19,8 @@ export default function MainLayout() {
     const token = getToken()
     if (token && isValidToken(token))
       getProfile()
-        .then((profile) => {
-          dispatch(setUser({ profile }))
+        .then((userProfile) => {
+          dispatch(setUser({ profile: userProfile }))
           setMounted.on()
         })
         .catch(() => navigate("/auth/sign-in"))

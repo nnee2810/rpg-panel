@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { LazyLoadImage } from "react-lazy-load-image-component"
-import { formatCurrency } from "utils/format"
+import { formatCurrency } from "utils"
 import { IVehicle } from "../interfaces"
 
 export default function useTableVehicles(data: IVehicle[] = []) {

@@ -23,8 +23,8 @@ export default function RadioGroup({
   return (
     <R
       value={value}
-      onChange={(value) => {
-        if (onChange) onChange(value)
+      onChange={(newValue) => {
+        if (onChange) onChange(newValue)
       }}
     >
       <div className="space-y-2">

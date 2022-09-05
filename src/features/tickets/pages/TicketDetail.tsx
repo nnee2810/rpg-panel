@@ -41,8 +41,8 @@ export default function TicketDetail() {
       }),
       {
         loading: "Đang cập nhật phiếu...",
-        success(ticket) {
-          queryClient.setQueryData(["get-ticket", id], ticket)
+        success(data) {
+          queryClient.setQueryData(["get-ticket", id], data)
           return "Đã cập nhật phiếu"
         },
         error: (error) => getAxiosMessageError(error),

@@ -8,7 +8,7 @@ import { UserLink } from "components"
 import { API } from "configs/api"
 import { IUser } from "features/users/interfaces"
 import { useMemo } from "react"
-import { formatConnectedTime } from "utils/format"
+import { formatConnectedTime } from "utils"
 
 function useGetTopConnectedTime() {
   return useQuery(

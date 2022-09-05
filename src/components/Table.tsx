@@ -18,9 +18,9 @@ export default function Table<T>({
     <div className="relative">
       <table className="w-full bg-gray-800 rounded-md">
         <thead>
-          {headerGroup.map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
+          {headerGroup.map((group) => (
+            <tr key={group.id}>
+              {group.headers.map((header) => (
                 <th className="p-4 border-b border-gray-700/50" key={header.id}>
                   {header.isPlaceholder
                     ? null

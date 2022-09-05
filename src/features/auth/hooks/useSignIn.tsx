@@ -5,7 +5,7 @@ import { getAxiosMessageError, requiredMessage } from "helpers"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
-import { setToken } from "utils/token"
+import { setToken } from "utils"
 import * as yup from "yup"
 import { SignInDto } from "../dto"
 
@@ -30,20 +30,15 @@ export default function useSignIn() {
 
   const handleSubmit = methods.handleSubmit((values) => {
     if (isLoading) return
-    toast.promise(
-      mutateAsync(values, {
-        onSuccess(data) {},
-      }),
-      {
-        loading: "Đang kiểm tra tài khoản...",
-        success(token) {
-          setToken(token)
-          navigate("/")
-          return "Đăng nhập thành công"
-        },
-        error: (error) => getAxiosMessageError(error),
-      }
-    )
+    toast.promise(mutateAsync(values), {
+      loading: "Đang kiểm tra tài khoản...",
+      success(token) {
+        setToken(token)
+        navigate("/")
+        return "Đăng nhập thành công"
+      },
+      error: (error) => getAxiosMessageError(error),
+    })
   })
 
   return { methods, handleSubmit, isLoading }

@@ -9,6 +9,7 @@ import {
 } from "helpers"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
+import { deleteWhiteSpace } from "utils"
 import * as yup from "yup"
 import { CreateTicketDto } from "../dto"
 import { TicketCategory } from "../interfaces"
@@ -27,12 +28,20 @@ const schema = yup.object().shape({
     .string()
     .label("Tiêu đề")
     .required(requiredMessage)
-    .max(50, maxLengthMessage),
+    .max(50, maxLengthMessage)
+    .test({
+      test: (value) => !!deleteWhiteSpace(value),
+      message: invalidMessage,
+    }),
   description: yup
     .string()
     .label("Mô tả")
     .required(requiredMessage)
-    .max(300, maxLengthMessage),
+    .max(300, maxLengthMessage)
+    .test({
+      test: (value) => !!deleteWhiteSpace(value),
+      message: invalidMessage,
+    }),
 })
 
 export default function useCreateTicket({ onClose }: UseCreateTicketProps) {

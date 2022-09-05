@@ -1,6 +1,6 @@
 import { BasicTable, Tag } from "components"
 import { factions, jobs } from "configs/constants"
-import { formatConnectedTime } from "utils/format"
+import { formatConnectedTime } from "utils"
 import { IUser } from "../interfaces"
 
 interface ProfileOverviewProps {

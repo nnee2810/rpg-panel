@@ -26,8 +26,8 @@ export default function Select({
   return (
     <Listbox
       value={value}
-      onChange={(value) => {
-        if (onChange) onChange(value)
+      onChange={(newValue) => {
+        if (onChange) onChange(newValue)
       }}
     >
       <div className="relative">

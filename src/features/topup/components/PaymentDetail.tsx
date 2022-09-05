@@ -1,5 +1,5 @@
 import { BasicTable, Button } from "components"
-import { formatCurrency } from "utils/format"
+import { formatCurrency } from "utils"
 import { CreatePaymentDto } from "../dto"
 
 interface PaymentDetailProps {

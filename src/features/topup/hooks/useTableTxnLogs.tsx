@@ -10,7 +10,7 @@ import { useMemo } from "react"
 import { AiOutlineEye } from "react-icons/ai"
 import { Link } from "react-router-dom"
 import { userSelector } from "store/reducers/user"
-import { formatCurrency } from "utils/format"
+import { formatCurrency } from "utils"
 import { ITxn } from "../interfaces"
 
 export default function useTableTxnLogs(data: ITxn[]) {

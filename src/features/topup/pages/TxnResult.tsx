@@ -10,7 +10,7 @@ import { vnpResponseMessage } from "configs/constants"
 import moment from "moment"
 import { BsCheckCircleFill, BsXCircle } from "react-icons/bs"
 import { useNavigate, useParams } from "react-router-dom"
-import { formatCurrency } from "utils/format"
+import { formatCurrency } from "utils"
 import { useGetTxn } from "../hooks"
 
 export default function TxnResult() {
@@ -21,9 +21,8 @@ export default function TxnResult() {
   return (
     <div className="space-y-4">
       <PageHeader>Kết quả giao dịch</PageHeader>
-      {isLoading ? (
-        <Loading />
-      ) : data ? (
+      {isLoading && <Loading />}
+      {!isLoading && data ? (
         <div className="max-w-lg mx-auto py-4 space-y-4 ">
           <div
             className={

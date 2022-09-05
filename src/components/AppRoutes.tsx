@@ -160,6 +160,5 @@ const routes: RouteObject[] = [
   },
 ]
 export default function AppRoutes() {
-  const element = useRoutes(routes)
-  return element
+  return useRoutes(routes)
 }

@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios"
-import { getToken } from "utils/token"
+import { getToken } from "utils"
 
 export const API = axios.create({
   baseURL: process.env.REACT_APP_API_URL,

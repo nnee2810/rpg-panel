@@ -1,5 +1,5 @@
 import { AlertMessage, BasicTable, Empty, Loading, Table } from "components"
-import { formatCurrency } from "utils/format"
+import { formatCurrency } from "utils"
 import { useGetUserProperties, useTableVehicles } from "../hooks"
 
 interface ProfilePropertiesProps {
@@ -10,9 +10,11 @@ export default function ProfileProperties({ name }: ProfilePropertiesProps) {
   const { data, isLoading } = useGetUserProperties(name)
   const { getHeaderGroups, getRowModel } = useTableVehicles(data?.vehicles)
 
-  if (isLoading) return <Loading />
+  if (isLoading) return
 
-  return data ? (
+  return isLoading ? (
+    <Loading />
+  ) : data ? (
     <div className="bg-gray-800 rounded-md">
       <div className="p-4 font-medium border-b border-gray-700">
         Phương tiện

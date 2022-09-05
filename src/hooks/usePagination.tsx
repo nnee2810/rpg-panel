@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { generateNumberRange } from "utils/generateNumberRange"
+import { generateNumberRange } from "utils"
 
 export interface UsePaginationProps {
   currentPage: number

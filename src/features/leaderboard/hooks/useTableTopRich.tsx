@@ -9,7 +9,7 @@ import { API } from "configs/api"
 import { IUser } from "features/users/interfaces"
 
 import { useMemo } from "react"
-import { formatCurrency } from "utils/format"
+import { formatCurrency } from "utils"
 
 interface IUserWithTotalMoney extends IUser {
   totalMoney: string
