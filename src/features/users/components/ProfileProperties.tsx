@@ -10,8 +10,6 @@ export default function ProfileProperties({ name }: ProfilePropertiesProps) {
   const { data, isLoading } = useGetUserProperties(name)
   const { getHeaderGroups, getRowModel } = useTableVehicles(data?.vehicles)
 
-  if (isLoading) return
-
   return isLoading ? (
     <Loading />
   ) : data ? (
