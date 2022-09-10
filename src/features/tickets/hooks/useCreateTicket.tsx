@@ -29,19 +29,13 @@ const schema = yup.object().shape({
     .label("Tiêu đề")
     .required(requiredMessage)
     .max(50, maxLengthMessage)
-    .test({
-      test: (value) => !!deleteWhiteSpace(value),
-      message: invalidMessage,
-    }),
+    .transform((value) => deleteWhiteSpace(value)),
   description: yup
     .string()
     .label("Mô tả")
     .required(requiredMessage)
     .max(300, maxLengthMessage)
-    .test({
-      test: (value) => !!deleteWhiteSpace(value),
-      message: invalidMessage,
-    }),
+    .transform((value) => deleteWhiteSpace(value)),
 })
 
 export default function useCreateTicket({ onClose }: UseCreateTicketProps) {

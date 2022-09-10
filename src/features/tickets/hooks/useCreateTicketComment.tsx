@@ -8,6 +8,7 @@ import {
 } from "helpers"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
+import { deleteWhiteSpace } from "utils"
 import * as yup from "yup"
 
 interface FormValues {
@@ -19,7 +20,8 @@ const schema = yup.object().shape({
     .string()
     .label("Phản hồi")
     .required(requiredMessage)
-    .max(300, maxLengthMessage),
+    .max(300, maxLengthMessage)
+    .transform((value) => deleteWhiteSpace(value)),
 })
 
 export default function useCreateTicketComment(id: string) {

@@ -5,13 +5,21 @@ import { getAxiosMessageError, requiredMessage } from "helpers"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
-import { setToken } from "utils"
+import { deleteWhiteSpace, setToken } from "utils"
 import * as yup from "yup"
 import { SignInDto } from "../dto"
 
 const schema = yup.object().shape({
-  name: yup.string().label("Tên nhân vật").required(requiredMessage),
-  password: yup.string().label("Mật khẩu").required(requiredMessage),
+  name: yup
+    .string()
+    .label("Tên nhân vật")
+    .required(requiredMessage)
+    .transform((value) => deleteWhiteSpace(value)),
+  password: yup
+    .string()
+    .label("Mật khẩu")
+    .required(requiredMessage)
+    .transform((value) => deleteWhiteSpace(value)),
 })
 
 export default function useSignIn() {
